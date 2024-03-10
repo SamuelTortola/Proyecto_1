@@ -5,7 +5,7 @@
 ; Proyecto: Proyecto reloj real
 ; Hardware: Atmega238p
 ; Creado: 16/02/2024
-; Última modificación: 02/03/2024 
+; Última modificación: 08/03/2024 
 ;******************************************************************************
 
 
@@ -266,6 +266,8 @@ INCR19:
 	JMP HORA
 
 IINCR19:
+	CPI R22, 0  //display 4 llega a -1
+	BRLT RES111  //Salta si es menor, con signo
 	CPI R20, 4   //Si display 2 muestra un 3
 	BREQ REE
 	CPI R20, 0 //Si display 2 muestra un 0
@@ -724,12 +726,12 @@ REW:
 	JMP ALARMA
 
 REW1:
-	CLR R11   //Colocar limite superior
+	CLR R11   //Colocar limite
 	CLR R12
 	JMP ALARMA
 	
 RREW:
-	CLR R14    //Colocar limite superior
+	CLR R14    //Colocar limite 
 	CLR R15
 	JMP ALARMA
 	
@@ -1108,7 +1110,7 @@ ALARMA:
 	   //Hacer la multiplexación
 		CALL RETARDO
 		SBI PINC, PC0  //Activar el 1er display
-	
+		MOV R13, R17
 		LDI ZH, HIGH(TABLA <<1)  //da el byte mas significativo
 		LDI ZL, LOW(TABLA <<1) //va la dirección de TABLA
 		ADD ZL, R11
@@ -1180,7 +1182,8 @@ MOSTRARALARMA:
 	 //Hacer la multiplexación
 		CALL RETARDO
 		SBI PINC, PC0  //Activar el 1er display
-
+		SBI PINC, PC4
+		
 		LDI R28, 0b00111111
 		OUT PORTD, R28
 	

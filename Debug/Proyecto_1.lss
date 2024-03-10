@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  D:\samue\Escritorio\OneDrive - UVG\UVG\Año 2024\Semestre 1\Progra micros\Practicas\Proyecto reloj real\Proyecto_1\main.asm Sun Mar 03 22:13:41 2024
+AVRASM ver. 2.2.8  D:\samue\Escritorio\OneDrive - UVG\UVG\Año 2024\Semestre 1\Progra micros\Practicas\Proyecto reloj real\Proyecto_1\main.asm Sat Mar 09 18:50:55 2024
 
 [builtin](2): Including file 'D:/Programas\Microchip studio\7.0\Packs\Atmel\ATmega_DFP\2.1.506\avrasm\inc\m328Pdef.inc'
 D:\samue\Escritorio\OneDrive - UVG\UVG\Año 2024\Semestre 1\Progra micros\Practicas\Proyecto reloj real\Proyecto_1\main.asm(15): Including file 'D:/Programas\Microchip studio\7.0\Packs\Atmel\ATmega_DFP\2.1.506\avrasm\inc\M328PDEF.inc'
@@ -993,7 +993,7 @@ D:\samue\Escritorio\OneDrive - UVG\UVG\Año 2024\Semestre 1\Progra micros\Practic
                                  ; Proyecto: Proyecto reloj real
                                  ; Hardware: Atmega238p
                                  ; Creado: 16/02/2024
-                                 ; Última modificación: 02/03/2024 
+                                 ; Última modificación: 08/03/2024 
                                  ;******************************************************************************
                                  
                                  
@@ -1063,13 +1063,13 @@ D:\samue\Escritorio\OneDrive - UVG\UVG\Año 2024\Semestre 1\Progra micros\Practic
                                  .ORG 0x00
 000000 940c 0022                 	JMP MAIN  //Vector RESET
                                  .ORG 0X0006
-000006 940c 03d3                 	JMP ISR_PCINT0 //Vector de interrupciones de pulsadores
+000006 940c 03d7                 	JMP ISR_PCINT0 //Vector de interrupciones de pulsadores
                                  
                                  .ORG 0x001A
-00001a 940c 03c4                 	JMP ISR_TIMER1_OVF  //Vector de interrupciones del timer1
+00001a 940c 03c8                 	JMP ISR_TIMER1_OVF  //Vector de interrupciones del timer1
                                  
                                  .ORG 0X0020
-000020 940c 03a7                 	JMP ISR_TIMER0_OVF //Vector de interrupciones del timer0
+000020 940c 03ab                 	JMP ISR_TIMER0_OVF //Vector de interrupciones del timer0
                                  
                                  MAIN:
                                  	;******************************************************************************
@@ -1158,8 +1158,8 @@ D:\samue\Escritorio\OneDrive - UVG\UVG\Año 2024\Semestre 1\Progra micros\Practic
 00005d 2eef                      	MOV R14, R31  //Registro 3  de alarma 
 00005e 2eff                      	MOV R15, R31  //Registro 4  de alarma 
                                  	
-00005f 940e 039c                 	CALL INITTIMER0 //Arrancando timer0
-000061 940e 03b3                 	CALL INITTIMER1 //Arrancando el timer1
+00005f 940e 03a0                 	CALL INITTIMER0 //Arrancando timer0
+000061 940e 03b7                 	CALL INITTIMER1 //Arrancando el timer1
                                  	
                                  
                                  LOOP: 
@@ -1200,10 +1200,10 @@ D:\samue\Escritorio\OneDrive - UVG\UVG\Año 2024\Semestre 1\Progra micros\Practic
 00007b 940c 0063                 	JMP LOOP
                                  
                                  REESETT:
-00007d 940c 00fe                 	JMP REESET
+00007d 940c 0100                 	JMP REESET
                                  
                                  CAAA:
-00007f 940c 01e1                 	JMP CAMBIOALARMA
+00007f 940c 01e3                 	JMP CAMBIOALARMA
                                  FE:
 000081 1271                      		CPSE R7, R17    //Hacer la función solo una vez
 000082 9a35                      			SBI PINC, PC5  //Apagar el LED de hora
@@ -1224,7 +1224,7 @@ D:\samue\Escritorio\OneDrive - UVG\UVG\Año 2024\Semestre 1\Progra micros\Practic
                                  		
 00008d 2488                      		CLR R8    //Limpiar registro 8
                                  		
-00008e 940c 0315                 		JMP FECHA
+00008e 940c 0317                 		JMP FECHA
                                  
                                  	HO1:
                                  	   
@@ -1241,24 +1241,24 @@ D:\samue\Escritorio\OneDrive - UVG\UVG\Año 2024\Semestre 1\Progra micros\Practic
 000097 2e8a                      		MOV R8, R26
 000098 2477                      		CLR R7   //Limpiar registro 7 
                                  
-000099 940c 022b                 		JMP HORA
+000099 940c 022d                 		JMP HORA
                                  PAR:
-00009b 940c 0257                 	JMP PARPADEO
+00009b 940c 0259                 	JMP PARPADEO
                                  
                                  MI:
-00009d 940c 025d                 	JMP MINUTOS
+00009d 940c 025f                 	JMP MINUTOS
                                  
                                  CAH:
 00009f 940c 00a7                 	JMP CAMBIOHORA
                                  
                                  CAF:
-0000a1 940c 0110                 	JMP CAMBIOFECHA
+0000a1 940c 0112                 	JMP CAMBIOFECHA
                                  
                                  APAGARR:
-0000a3 940c 0366                 	JMP APAGAR
+0000a3 940c 0369                 	JMP APAGAR
                                  
                                  HOLAAA:
-0000a5 940c 0305                 	JMP ACTIVANO
+0000a5 940c 0307                 	JMP ACTIVANO
                                  
                                  CAMBIOHORA:   //Configuración cambio de hora
 0000a7 2788                          CLR R24 //iniciar de 0 el contador de minutos
@@ -1279,7 +1279,7 @@ D:\samue\Escritorio\OneDrive - UVG\UVG\Año 2024\Semestre 1\Progra micros\Practic
 0000b1 2e09                      	MOV R0, R25
                                  
 0000b2 306a                      	CPI R22, 10   //si display 4 llega a 9
-0000b3 f151                      	BREQ HH
+0000b3 f161                      	BREQ HH
                                  
 0000b4 304a                      	CPI R20, 10  //Si display 2 llega a 9
 0000b5 f041                      	BREQ INCR19
@@ -1288,1009 +1288,1012 @@ D:\samue\Escritorio\OneDrive - UVG\UVG\Año 2024\Semestre 1\Progra micros\Practic
 0000b7 f450                      	BRSH IINCR19
                                  
 0000b8 3040                      	CPI R20, 0  //display 2 llega a -1
-0000b9 f094                      	BRLT RES11  //Salta si es menor, con signo
+0000b9 f0a4                      	BRLT RES11  //Salta si es menor, con signo
                                  
 0000ba 3060                      	CPI R22, 0  //display 4 llega a -1
-0000bb f184                      	BRLT RES111  //Salta si es menor, con signo
+0000bb f194                      	BRLT RES111  //Salta si es menor, con signo
                                  
-0000bc 940c 022b                 	JMP HORA
+0000bc 940c 022d                 	JMP HORA
                                  
                                  INCR19:
 0000be 9533                      	INC R19   //Incrementar display 1
 0000bf 2744                      	CLR R20   //limpiar display 2
-0000c0 940c 022b                 	JMP HORA
+0000c0 940c 022d                 	JMP HORA
                                  
                                  IINCR19:
-0000c2 3044                      	CPI R20, 4   //Si display 2 muestra un 3
-0000c3 f021                      	BREQ REE
-0000c4 3040                      	CPI R20, 0 //Si display 2 muestra un 0
-0000c5 f064                      	BRLT REA
-0000c6 940c 022b                 	JMP HORA
+0000c2 3060                      	CPI R22, 0  //display 4 llega a -1
+0000c3 f154                      	BRLT RES111  //Salta si es menor, con signo
+0000c4 3044                      	CPI R20, 4   //Si display 2 muestra un 3
+0000c5 f021                      	BREQ REE
+0000c6 3040                      	CPI R20, 0 //Si display 2 muestra un 0
+0000c7 f064                      	BRLT REA
+0000c8 940c 022d                 	JMP HORA
                                  
                                  REE:
-0000c8 e040                      	LDI R20, 0  //restear todo el arreglo de primer display
-0000c9 e030                      	LDI R19, 0
-0000ca 940c 022b                 	JMP HORA
+0000ca e040                      	LDI R20, 0  //restear todo el arreglo de primer display
+0000cb e030                      	LDI R19, 0
+0000cc 940c 022d                 	JMP HORA
                                  
                                  RES11:
-0000cc 3031                      	CPI R19, 1   //Si display 1 llega a 1
-0000cd f041                      	BREQ IINCR199
-0000ce e032                      	LDI R19, 2
-0000cf e043                      	LDI R20, 3
-0000d0 940c 022b                 	JMP HORA
+0000ce 3031                      	CPI R19, 1   //Si display 1 llega a 1
+0000cf f041                      	BREQ IINCR199
+0000d0 e032                      	LDI R19, 2
+0000d1 e043                      	LDI R20, 3
+0000d2 940c 022d                 	JMP HORA
                                  
                                  REA:
-0000d2 e031                      	LDI R19, 1  //Colocar el valor 19 en el primer arreglo de displays
-0000d3 e049                      	LDI R20, 9
-0000d4 940c 022b                 	JMP HORA
+0000d4 e031                      	LDI R19, 1  //Colocar el valor 19 en el primer arreglo de displays
+0000d5 e049                      	LDI R20, 9
+0000d6 940c 022d                 	JMP HORA
                                  
                                  IINCR199:
-0000d6 3040                      	CPI R20,0    //Cuando el arreglo de display 1 llegue a 10
-0000d7 f014                      	BRLT IINCR1999
-0000d8 940c 022b                 	JMP HORA
+0000d8 3040                      	CPI R20,0    //Cuando el arreglo de display 1 llegue a 10
+0000d9 f014                      	BRLT IINCR1999
+0000da 940c 022d                 	JMP HORA
                                  
                                  IINCR1999:
-0000da e030                      	LDI R19, 0  //Colocar el arreglo de display 1 a 09
-0000db e049                      	LDI R20, 9
-0000dc 940c 022b                 	JMP HORA
+0000dc e030                      	LDI R19, 0  //Colocar el arreglo de display 1 a 09
+0000dd e049                      	LDI R20, 9
+0000de 940c 022d                 	JMP HORA
                                  
                                  
                                  HH:
-0000de 9553                      	INC R21  //Incrementar valor en display 3
-0000df 3056                      	CPI R21, 6  //si display 3 llega 5
-0000e0 f418                      	BRSH HHH
-0000e1 2766                      	CLR R22
-0000e2 940c 022b                 	JMP HORA
+0000e0 9553                      	INC R21  //Incrementar valor en display 3
+0000e1 3056                      	CPI R21, 6  //si display 3 llega 5
+0000e2 f418                      	BRSH HHH
+0000e3 2766                      	CLR R22
+0000e4 940c 022d                 	JMP HORA
                                  
                                  HHH:
-0000e4 306a                      	CPI R22, 10  //Verificar si display 4 llegó a 9
-0000e5 f011                      	BREQ REH
-0000e6 940c 022b                 	JMP HORA
+0000e6 306a                      	CPI R22, 10  //Verificar si display 4 llegó a 9
+0000e7 f011                      	BREQ REH
+0000e8 940c 022d                 	JMP HORA
                                  
                                  REH:
-0000e8 e050                      	LDI R21, 0   //Resetear el arreglo de display 2
-0000e9 e060                      	LDI R22, 0
-0000ea 940c 022b                 	JMP HORA
+0000ea e050                      	LDI R21, 0   //Resetear el arreglo de display 2
+0000eb e060                      	LDI R22, 0
+0000ec 940c 022d                 	JMP HORA
                                  
                                  RES111:
-0000ec 3055                          CPI R21, 5 
-0000ed f061                      	BREQ RES22
-0000ee 3054                          CPI R21, 4
-0000ef f051                      	BREQ RES22
-0000f0 3053                          CPI R21, 3
-0000f1 f041                      	BREQ RES22
-0000f2 3052                      	CPI R21, 2
-0000f3 f031                      	BREQ RES22
-0000f4 3051                      	CPI R21, 1
-0000f5 f021                      	BREQ RES22
-0000f6 e055                      	LDI R21, 5
-0000f7 e069                      	LDI R22, 9
-0000f8 940c 022b                 	JMP HORA
+0000ee 3055                          CPI R21, 5 
+0000ef f061                      	BREQ RES22
+0000f0 3054                          CPI R21, 4
+0000f1 f051                      	BREQ RES22
+0000f2 3053                          CPI R21, 3
+0000f3 f041                      	BREQ RES22
+0000f4 3052                      	CPI R21, 2
+0000f5 f031                      	BREQ RES22
+0000f6 3051                      	CPI R21, 1
+0000f7 f021                      	BREQ RES22
+0000f8 e055                      	LDI R21, 5
+0000f9 e069                      	LDI R22, 9
+0000fa 940c 022d                 	JMP HORA
                                  
                                  RES22:
-0000fa 955a                      	DEC R21    //Decrementar valor de display 3
-0000fb e069                      	LDI R22, 9  //Colocar display 4 en 9
-0000fc 940c 022b                 	JMP HORA
+0000fc 955a                      	DEC R21    //Decrementar valor de display 3
+0000fd e069                      	LDI R22, 9  //Colocar display 4 en 9
+0000fe 940c 022d                 	JMP HORA
                                  
                                  REESET:
-0000fe e010                      	LDI R17,0   //Limpiar registro 17
-0000ff 2ed1                      	MOV R13, R17  //Mover registro 17 a 13
-000100 b1a6                      	IN R26, PINC
-000101 fda5                      	SBRC R26, PC5  //Salta si el bit esta en 1
-000102 9a35                      		SBI PINC, PC5  //Apaga o enciende el LED de hora
+000100 e010                      	LDI R17,0   //Limpiar registro 17
+000101 2ed1                      	MOV R13, R17  //Mover registro 17 a 13
+000102 b1a6                      	IN R26, PINC
+000103 fda5                      	SBRC R26, PC5  //Salta si el bit esta en 1
+000104 9a35                      		SBI PINC, PC5  //Apaga o enciende el LED de hora
                                  
-000103 b199                      	IN R25, PIND
-000104 fd97                      	SBRC R25, PD7    //Si en dado caso la alarma esta encendida
-000105 9a4f                      		SBI PIND, PD7     //Apagar la alarma 
-                                 
+000105 b199                      	IN R25, PIND
 000106 fd97                      	SBRC R25, PD7    //Si en dado caso la alarma esta encendida
-000107 e0a2                      	    LDI R26, 2 
+000107 9a4f                      		SBI PIND, PD7     //Apagar la alarma 
                                  
 000108 fd97                      	SBRC R25, PD7    //Si en dado caso la alarma esta encendida
-000109 2e1a                      	    MOV R1, R26
+000109 e0a2                      	    LDI R26, 2 
                                  
 00010a fd97                      	SBRC R25, PD7    //Si en dado caso la alarma esta encendida
-00010b e2a0                      		LDI R26, 0b0100000
+00010b 2e1a                      	    MOV R1, R26
                                  
 00010c fd97                      	SBRC R25, PD7    //Si en dado caso la alarma esta encendida
-00010d b9a8                      		OUT PORTC, R26	
+00010d e2a0                      		LDI R26, 0b0100000
+                                 
+00010e fd97                      	SBRC R25, PD7    //Si en dado caso la alarma esta encendida
+00010f b9a8                      		OUT PORTC, R26	
                                  	 
-00010e 940c 0063                 	JMP LOOP
+000110 940c 0063                 	JMP LOOP
                                  
                                  CAMBIOFECHA:
-000110 2da2                      	MOV R26, R2 //Mover registro 2 a 26
-000111 2db3                      	MOV R27, R3 //Mover registro 3 a 27
-000112 2dc4                      	MOV R28, R4 //Mover registro 4 a 28
-000113 2dd5                      	MOV R29, R5 //Mover registro 5 a 29
+000112 2da2                      	MOV R26, R2 //Mover registro 2 a 26
+000113 2db3                      	MOV R27, R3 //Mover registro 3 a 27
+000114 2dc4                      	MOV R28, R4 //Mover registro 4 a 28
+000115 2dd5                      	MOV R29, R5 //Mover registro 5 a 29
                                  
-000114 1271                      	CPSE R7, R17   //Hacer la función solo una vez
-000115 b0a6                      		IN R10, PINC
+000116 1271                      	CPSE R7, R17   //Hacer la función solo una vez
+000117 b0a6                      		IN R10, PINC
                                  
-000116 fea4                      	SBRS R10, 4    //En caso los LEDs del centro esten apagados
-000117 9a34                      		SBI PINC, PC4   //Mostrar LEDS centrales
+000118 fea4                      	SBRS R10, 4    //En caso los LEDs del centro esten apagados
+000119 9a34                      		SBI PINC, PC4   //Mostrar LEDS centrales
                                  
-000118 1271                         CPSE R7, R17
-000119 b1f6                      	    IN R31, PINC
+00011a 1271                         CPSE R7, R17
+00011b b1f6                      	    IN R31, PINC
                                  
-00011a fff5                         SBRS R31, 5
-00011b 9a35                      	SBI PINC, PC5  //Encender LED de hora
+00011c fff5                         SBRS R31, 5
+00011d 9a35                      	SBI PINC, PC5  //Encender LED de hora
                                  	
                                  
-00011c e091                      	LDI R25, 1       //Forzar al CPSE a no realizarse 
-00011d 2e79                      	MOV R7, R25
-00011e e190                      	LDI R25,0b0010000   //Forzar al SBRS a no realizarse
-00011f 2ea9                      	MOV R10, R25
-000120 e290                      	LDI R25, 0b00100000
-000121 2ff9                      	MOV R31, R25
+00011e e091                      	LDI R25, 1       //Forzar al CPSE a no realizarse 
+00011f 2e79                      	MOV R7, R25
+000120 e190                      	LDI R25,0b0010000   //Forzar al SBRS a no realizarse
+000121 2ea9                      	MOV R10, R25
+000122 e290                      	LDI R25, 0b00100000
+000123 2ff9                      	MOV R31, R25
                                  
-000122 fe00                      	SBRS R0, PB0 // Salta si el bit del registro es 0 
-000123 940c 0179                 		JMP SPB0
+000124 fe00                      	SBRS R0, PB0 // Salta si el bit del registro es 0 
+000125 940c 017b                 		JMP SPB0
                                  	
-000125 fe02                      	SBRS R0, PB2 // Salta si el bit del registro es 0 
-000126 940c 0183                 		JMP SPB2
+000127 fe02                      	SBRS R0, PB2 // Salta si el bit del registro es 0 
+000128 940c 0185                 		JMP SPB2
                                  
-000128 fe01                      	SBRS R0, PB1 // Salta si el bit del registro es 0 
-000129 940c 017e                 		JMP SPB1
+00012a fe01                      	SBRS R0, PB1 // Salta si el bit del registro es 0 
+00012b 940c 0180                 		JMP SPB1
                                  
-00012b fe03                      	SBRS R0, PB3 // Salta si el bit del registro es 0 
-00012c 940c 0187                 		JMP SPB3
+00012d fe03                      	SBRS R0, PB3 // Salta si el bit del registro es 0 
+00012e 940c 0189                 		JMP SPB3
                                  
-00012e 940c 0315                 	JMP FECHA
+000130 940c 0317                 	JMP FECHA
                                  
                                  	COMPA:
-000130 e09f                      			LDI R25, 0b00001111   //Bloquear R0
-000131 2e09                      			MOV R0, R25
+000132 e09f                      			LDI R25, 0b00001111   //Bloquear R0
+000133 2e09                      			MOV R0, R25
                                  
-000132 2d99                      			MOV R25, R9   //Meses que han pasado
-000133 3091                      			CPI R25, 1 //ENERO
-000134 f199                      			BREQ SS311
+000134 2d99                      			MOV R25, R9   //Meses que han pasado
+000135 3091                      			CPI R25, 1 //ENERO
+000136 f199                      			BREQ SS311
                                  
-000135 3092                      			CPI R25, 2 //FEBRERO
-000136 f1b9                      			BREQ SS288
+000137 3092                      			CPI R25, 2 //FEBRERO
+000138 f1b9                      			BREQ SS288
                                  
-000137 3093                      			CPI R25, 3  //MARZO
-000138 f179                      			BREQ SS311
+000139 3093                      			CPI R25, 3  //MARZO
+00013a f179                      			BREQ SS311
                                  
-000139 3094                      			CPI R25, 4  //ABRIL
-00013a f181                      			BREQ SS300
+00013b 3094                      			CPI R25, 4  //ABRIL
+00013c f181                      			BREQ SS300
                                  
-00013b 3095                      			CPI R25, 5   //MAYO
-00013c f159                      			BREQ SS311
+00013d 3095                      			CPI R25, 5   //MAYO
+00013e f159                      			BREQ SS311
                                  
-00013d 3096                      			CPI R25, 6  //JUNIO
-00013e f161                      			BREQ SS300
+00013f 3096                      			CPI R25, 6  //JUNIO
+000140 f161                      			BREQ SS300
                                  
-00013f 3097                      			CPI R25, 7  //JULIO
-000140 f139                      			BREQ SS311
+000141 3097                      			CPI R25, 7  //JULIO
+000142 f139                      			BREQ SS311
                                  
-000141 3098                      			CPI R25, 8  //AGOSTO
-000142 f129                      			BREQ SS311
+000143 3098                      			CPI R25, 8  //AGOSTO
+000144 f129                      			BREQ SS311
                                  
-000143 3099                      			CPI R25, 9   //SEPTIEMBRE
-000144 f131                      			BREQ SS300
+000145 3099                      			CPI R25, 9   //SEPTIEMBRE
+000146 f131                      			BREQ SS300
                                  
-000145 309a                      			CPI R25, 10   //OCTUBRE
-000146 f109                      			BREQ SS311
+000147 309a                      			CPI R25, 10   //OCTUBRE
+000148 f109                      			BREQ SS311
                                  
-000147 309b                      			CPI R25, 11    //NOVIEMBRE
-000148 f111                      			BREQ SS300
+000149 309b                      			CPI R25, 11    //NOVIEMBRE
+00014a f111                      			BREQ SS300
                                  
-000149 309c                      			CPI R25, 12  //DICIEMBRE
-00014a f0e9                      			BREQ SS311
+00014b 309c                      			CPI R25, 12  //DICIEMBRE
+00014c f0e9                      			BREQ SS311
                                  
                                  			INTERFA:
                                  
-00014b 30ba                      				CPI R27, 10  //Si display 2 llega a mostrar 9
-00014c f0a9                      				BREQ FS11
+00014d 30ba                      				CPI R27, 10  //Si display 2 llega a mostrar 9
+00014e f0a9                      				BREQ FS11
                                  
-00014d 3fbf                      				CPI R27, -1  //Si display 2 llega a mostrar 0
-00014e f0a9                      				BREQ F55 
+00014f 3fbf                      				CPI R27, -1  //Si display 2 llega a mostrar 0
+000150 f0a9                      				BREQ F55 
                                  
-00014f 30da                      				CPI R29, 10    //Si display 4  llega a mostrar 9
-000150 f121                      				BREQ F1sa
+000151 30da                      				CPI R29, 10    //Si display 4  llega a mostrar 9
+000152 f121                      				BREQ F1sa
                                  
-000151 166e                      				CP R6, R30  //Cuando se llega al dia total del mes, desde enero hasta diciembre, dependiendo del dia final de cada mes
-000152 f099                      	            BREQ FFSS
+000153 166e                      				CP R6, R30  //Cuando se llega al dia total del mes, desde enero hasta diciembre, dependiendo del dia final de cada mes
+000154 f099                      	            BREQ FFSS
                                  
-000153 2d96                      				MOV R25, R6
-000154 3291                      				CPI R25, 33   //Limite para que los dias no pasen de 32, por si hay algun error
-000155 f081                      				BREQ FFSS
+000155 2d96                      				MOV R25, R6
+000156 3291                      				CPI R25, 33   //Limite para que los dias no pasen de 32, por si hay algun error
+000157 f081                      				BREQ FFSS
                                  
-000156 3090                      				CPI R25, 0
-000157 f0d9                      				BREQ MAYO
+000158 3090                      				CPI R25, 0
+000159 f0d9                      				BREQ MAYO
                                  
-000158 30c1                      				CPI R28, 1  //Si display 3 llega a mostrar 1
-000159 f0e9                      				BREQ F288
+00015a 30c1                      				CPI R28, 1  //Si display 3 llega a mostrar 1
+00015b f0e9                      				BREQ F288
                                  
-00015a 30d0                      				CPI R29, 0  //Si display 4 llega a mostrar 1
-00015b f0a9                      				BREQ F3rr
+00015c 30d0                      				CPI R29, 0  //Si display 4 llega a mostrar 1
+00015d f0a9                      				BREQ F3rr
                                  
                                  				
-00015c 2e3b                      				MOV R3, R27 //Mover registro 27 a 3
-00015d 2e2a                      				MOV R2, R26 //Mover registro 26 a 2
-00015e 2e4c                      				MOV R4, R28  //Mover registro 28 a 4
-00015f 2e5d                      				MOV R5, R29  //Mover registro 29 a 5
-000160 940c 0315                 				JMP FECHA
+00015e 2e3b                      				MOV R3, R27 //Mover registro 27 a 3
+00015f 2e2a                      				MOV R2, R26 //Mover registro 26 a 2
+000160 2e4c                      				MOV R4, R28  //Mover registro 28 a 4
+000161 2e5d                      				MOV R5, R29  //Mover registro 29 a 5
+000162 940c 0317                 				JMP FECHA
                                  FS11:
-000162 940c 01ae                 	JMP FS1
+000164 940c 01b0                 	JMP FS1
                                  
                                  F55:
-000164 940c 01b4                 	JMP F5
+000166 940c 01b6                 	JMP F5
                                  FFSS:
-000166 940c 01ba                 	JMP RETRA
+000168 940c 01bc                 	JMP RETRA
                                  
                                  SS311:
-000168 e2e0                      	LDI R30, 32
-000169 940c 014b                 	JMP INTERFA
+00016a e2e0                      	LDI R30, 32
+00016b 940c 014d                 	JMP INTERFA
                                  
                                  SS300:
-00016b e1ef                      	LDI R30, 31
-00016c 940c 014b                 	JMP INTERFA
+00016d e1ef                      	LDI R30, 31
+00016e 940c 014d                 	JMP INTERFA
                                  
                                  SS288:
-00016e e1ed                      	LDI R30, 29
-00016f 940c 014b                 	JMP INTERFA
+000170 e1ed                      	LDI R30, 29
+000171 940c 014d                 	JMP INTERFA
                                  
                                  F3rr:
-000171 940c 01a0                 	JMP F3
+000173 940c 01a2                 	JMP F3
                                  
                                  MAYO:
-000173 940c 01c1                 	JMP MAYOR
+000175 940c 01c3                 	JMP MAYOR
                                  
                                  F1sa:
-000175 940c 018b                 	JMP F1
+000177 940c 018d                 	JMP F1
                                  
                                  F288:
-000177 940c 0191                 	JMP F2
+000179 940c 0193                 	JMP F2
                                  
                                  SPB0:
-000179 95b3                      	INC R27     //Incrementa arreglo de display 1
-00017a 9463                      	INC R6    //Incrementa dias que van pasando 
-00017b 2e3b                      	MOV R3, R27 //Mover registro 27 a 3
+00017b 95b3                      	INC R27     //Incrementa arreglo de display 1
+00017c 9463                      	INC R6    //Incrementa dias que van pasando 
+00017d 2e3b                      	MOV R3, R27 //Mover registro 27 a 3
                                  
-00017c 940c 0130                 	JMP COMPA
+00017e 940c 0132                 	JMP COMPA
                                  
                                  SPB1:
-00017e 95ba                      	DEC R27    //Decrementa arreglo de display 1
-00017f 946a                      	DEC R6   //Decrementa dias que van pasando 
-000180 2e3b                      	MOV R3, R27 //Mover registro 27 a 3
+000180 95ba                      	DEC R27    //Decrementa arreglo de display 1
+000181 946a                      	DEC R6   //Decrementa dias que van pasando 
+000182 2e3b                      	MOV R3, R27 //Mover registro 27 a 3
                                  
-000181 940c 0130                 	JMP COMPA
+000183 940c 0132                 	JMP COMPA
                                  
                                  SPB2:
-000183 95d3                      	INC R29    //Incrementa arreglo de display 2
-000184 9493                      	INC R9  //Incrementa meses que van pasando
+000185 95d3                      	INC R29    //Incrementa arreglo de display 2
+000186 9493                      	INC R9  //Incrementa meses que van pasando
                                  
-000185 940c 0130                 	JMP COMPA
+000187 940c 0132                 	JMP COMPA
                                  
                                  SPB3:
-000187 95da                      	DEC R29    //Decrementa arreglo de display 2
-000188 949a                      	DEC R9    //Decrementa meses que van pasando 
+000189 95da                      	DEC R29    //Decrementa arreglo de display 2
+00018a 949a                      	DEC R9    //Decrementa meses que van pasando 
                                  
-000189 940c 0130                 	JMP COMPA
+00018b 940c 0132                 	JMP COMPA
                                  
                                  
                                  F1:
-00018b 95c3                      	INC R28
-00018c 27dd                      	CLR R29
-00018d 2e4c                      	MOV R4, R28  //Mover registro 28 a 4
-00018e 2e5d                      	MOV R5, R29  //Mover registro 29 a 5
-00018f 940c 0315                 	JMP FECHA
+00018d 95c3                      	INC R28
+00018e 27dd                      	CLR R29
+00018f 2e4c                      	MOV R4, R28  //Mover registro 28 a 4
+000190 2e5d                      	MOV R5, R29  //Mover registro 29 a 5
+000191 940c 0317                 	JMP FECHA
                                  
                                  F2:
-000191 30d3                      	CPI R29, 3  //Si se llega al mes 12
-000192 f031                      	BREQ FR
-000193 3fdf                      	CPI R29, -1
-000194 f099                      	BREQ F4
-000195 2e4c                      	MOV R4, R28  //Mover registro 28 a 4
-000196 2e5d                      	MOV R5, R29  //Mover registro 29 a 5
-000197 940c 0315                 	JMP FECHA
+000193 30d3                      	CPI R29, 3  //Si se llega al mes 12
+000194 f031                      	BREQ FR
+000195 3fdf                      	CPI R29, -1
+000196 f099                      	BREQ F4
+000197 2e4c                      	MOV R4, R28  //Mover registro 28 a 4
+000198 2e5d                      	MOV R5, R29  //Mover registro 29 a 5
+000199 940c 0317                 	JMP FECHA
                                  
                                  FR:
-000199 27cc                      	CLR R28
-00019a e0d1                      	LDI R29, 1
-00019b 2e9d                      	MOV R9, R29  //Reiniciar conteo de meses
-00019c 2e4c                      	MOV R4, R28  //Mover registro 28 a 4
-00019d 2e5d                      	MOV R5, R29  //Mover registro 29 a 5
-00019e 940c 0315                 	JMP FECHA
+00019b 27cc                      	CLR R28
+00019c e0d1                      	LDI R29, 1
+00019d 2e9d                      	MOV R9, R29  //Reiniciar conteo de meses
+00019e 2e4c                      	MOV R4, R28  //Mover registro 28 a 4
+00019f 2e5d                      	MOV R5, R29  //Mover registro 29 a 5
+0001a0 940c 0317                 	JMP FECHA
                                  
                                  F3:
-0001a0 e0c1                      	LDI R28, 1
-0001a1 e0d2                      	LDI R29, 2
-0001a2 e09c                      	LDI R25, 12
-0001a3 2e99                      	MOV R9, R25   //Los meses deben de ser 12
-0001a4 2e4c                      	MOV R4, R28  //Mover registro 28 a 4
-0001a5 2e5d                      	MOV R5, R29  //Mover registro 29 a 5
-0001a6 940c 0315                 	JMP FECHA
+0001a2 e0c1                      	LDI R28, 1
+0001a3 e0d2                      	LDI R29, 2
+0001a4 e09c                      	LDI R25, 12
+0001a5 2e99                      	MOV R9, R25   //Los meses deben de ser 12
+0001a6 2e4c                      	MOV R4, R28  //Mover registro 28 a 4
+0001a7 2e5d                      	MOV R5, R29  //Mover registro 29 a 5
+0001a8 940c 0317                 	JMP FECHA
                                  
                                  F4:
-0001a8 e0c0                      	LDI R28, 0
-0001a9 e0d9                      	LDI R29, 9
-0001aa 2e4c                      	MOV R4, R28  //Mover registro 28 a 4
-0001ab 2e5d                      	MOV R5, R29  //Mover registro 29 a 5
-0001ac 940c 0315                 	JMP FECHA
+0001aa e0c0                      	LDI R28, 0
+0001ab e0d9                      	LDI R29, 9
+0001ac 2e4c                      	MOV R4, R28  //Mover registro 28 a 4
+0001ad 2e5d                      	MOV R5, R29  //Mover registro 29 a 5
+0001ae 940c 0317                 	JMP FECHA
                                  
                                  FS1:
-0001ae 95a3                      	INC R26   //Aumentar el valor en display 1
-0001af 27bb                      	CLR R27
-0001b0 2e2a                      	MOV R2, R26 //Mover registro 26 a 2
-0001b1 2e3b                      	MOV R3, R27 //Mover registro 27 a 3
-0001b2 940c 0315                 	JMP FECHA
+0001b0 95a3                      	INC R26   //Aumentar el valor en display 1
+0001b1 27bb                      	CLR R27
+0001b2 2e2a                      	MOV R2, R26 //Mover registro 26 a 2
+0001b3 2e3b                      	MOV R3, R27 //Mover registro 27 a 3
+0001b4 940c 0317                 	JMP FECHA
                                  
                                  F5:
-0001b4 95aa                      	DEC R26
-0001b5 e0b9                      	LDI R27, 9
-0001b6 2e2a                      	MOV R2, R26 //Mover registro 26 a 2
-0001b7 2e3b                      	MOV R3, R27 //Mover registro 27 a 3
-0001b8 940c 0315                 	JMP FECHA
+0001b6 95aa                      	DEC R26
+0001b7 e0b9                      	LDI R27, 9
+0001b8 2e2a                      	MOV R2, R26 //Mover registro 26 a 2
+0001b9 2e3b                      	MOV R3, R27 //Mover registro 27 a 3
+0001ba 940c 0317                 	JMP FECHA
                                  
                                  RETRA:
-0001ba e0a0                      	LDI R26, 0
-0001bb e0b1                      	LDI R27, 1
-0001bc 2e6b                      	MOV R6, R27
-0001bd 2e2a                      	MOV R2, R26 //Mover registro 26 a 2
-0001be 2e3b                      	MOV R3, R27 //Mover registro 27 a 3
-0001bf 940c 0315                 	JMP FECHA
+0001bc e0a0                      	LDI R26, 0
+0001bd e0b1                      	LDI R27, 1
+0001be 2e6b                      	MOV R6, R27
+0001bf 2e2a                      	MOV R2, R26 //Mover registro 26 a 2
+0001c0 2e3b                      	MOV R3, R27 //Mover registro 27 a 3
+0001c1 940c 0317                 	JMP FECHA
                                  
                                  MAYOR:
-0001c1 31ed                      	CPI R30, 29
-0001c2 f031                      	BREQ MAYO1
+0001c3 31ed                      	CPI R30, 29
+0001c4 f031                      	BREQ MAYO1
                                  
-0001c3 31ef                      	CPI R30, 31
-0001c4 f061                      	BREQ MAYO2
+0001c5 31ef                      	CPI R30, 31
+0001c6 f061                      	BREQ MAYO2
                                  
-0001c5 32e0                      	CPI R30, 32
-0001c6 f091                      	BREQ MAYO3
+0001c7 32e0                      	CPI R30, 32
+0001c8 f091                      	BREQ MAYO3
                                  
-0001c7 940c 0315                 	JMP FECHA
+0001c9 940c 0317                 	JMP FECHA
                                  
                                  MAYO1:
-0001c9 e0a2                      	LDI R26, 2
-0001ca e0b8                      	LDI R27, 8
-0001cb e1dc                      	LDI R29, 28
-0001cc 2e6d                      	MOV R6, R29 //Mover registro 29 a 6
-0001cd 2e2a                      	MOV R2, R26 //Mover registro 26 a 2
-0001ce 2e3b                      	MOV R3, R27 //Mover registro 27 a 3
-0001cf 940c 0315                 	JMP FECHA
+0001cb e0a2                      	LDI R26, 2
+0001cc e0b8                      	LDI R27, 8
+0001cd e1dc                      	LDI R29, 28
+0001ce 2e6d                      	MOV R6, R29 //Mover registro 29 a 6
+0001cf 2e2a                      	MOV R2, R26 //Mover registro 26 a 2
+0001d0 2e3b                      	MOV R3, R27 //Mover registro 27 a 3
+0001d1 940c 0317                 	JMP FECHA
                                  
                                  MAYO2:
-0001d1 e0a3                      	LDI R26, 3
-0001d2 e0b0                      	LDI R27, 0
-0001d3 e1de                      	LDI R29, 30
-0001d4 2e6d                      	MOV R6, R29  //Mover registro 29 a 6
-0001d5 2e2a                      	MOV R2, R26 //Mover registro 26 a 2
-0001d6 2e3b                      	MOV R3, R27 //Mover registro 27 a 3
-0001d7 940c 0315                 	JMP FECHA
+0001d3 e0a3                      	LDI R26, 3
+0001d4 e0b0                      	LDI R27, 0
+0001d5 e1de                      	LDI R29, 30
+0001d6 2e6d                      	MOV R6, R29  //Mover registro 29 a 6
+0001d7 2e2a                      	MOV R2, R26 //Mover registro 26 a 2
+0001d8 2e3b                      	MOV R3, R27 //Mover registro 27 a 3
+0001d9 940c 0317                 	JMP FECHA
                                  
                                  
                                  MAYO3:
-0001d9 e0a3                      	LDI R26, 3
-0001da e0b1                      	LDI R27, 1
-0001db e1df                      	LDI R29, 31
-0001dc 2e6d                      	MOV R6, R29  //Mover registro 29 a 6
-0001dd 2e2a                      	MOV R2, R26 //Mover registro 26 a 2
-0001de 2e3b                      	MOV R3, R27 //Mover registro 27 a 3
-0001df 940c 0315                 	JMP FECHA
+0001db e0a3                      	LDI R26, 3
+0001dc e0b1                      	LDI R27, 1
+0001dd e1df                      	LDI R29, 31
+0001de 2e6d                      	MOV R6, R29  //Mover registro 29 a 6
+0001df 2e2a                      	MOV R2, R26 //Mover registro 26 a 2
+0001e0 2e3b                      	MOV R3, R27 //Mover registro 27 a 3
+0001e1 940c 0317                 	JMP FECHA
                                  
                                  
                                  CAMBIOALARMA:
-0001e1 fe00                      	SBRS R0, PB0 // Salta si el bit del registro es 0 
-0001e2 94c3                      	INC R12     //Incrementa arreglo de display 1
+0001e3 fe00                      	SBRS R0, PB0 // Salta si el bit del registro es 0 
+0001e4 94c3                      	INC R12     //Incrementa arreglo de display 1
                                  
-0001e3 fe02                      	SBRS R0, PB2 // Salta si el bit del registro es 0 
-0001e4 94f3                      	INC R15    //Incrementa arreglo de display 2
+0001e5 fe02                      	SBRS R0, PB2 // Salta si el bit del registro es 0 
+0001e6 94f3                      	INC R15    //Incrementa arreglo de display 2
                                  
-0001e5 fe01                      	SBRS R0, PB1 // Salta si el bit del registro es 0 
-0001e6 94ca                      	DEC R12    //Decrementa arreglo de display 1
+0001e7 fe01                      	SBRS R0, PB1 // Salta si el bit del registro es 0 
+0001e8 94ca                      	DEC R12    //Decrementa arreglo de display 1
                                  
-0001e7 fe03                      	SBRS R0, PB3 // Salta si el bit del registro es 0 
-0001e8 94fa                      	DEC R15    //Decrementa arreglo de display 2
+0001e9 fe03                      	SBRS R0, PB3 // Salta si el bit del registro es 0 
+0001ea 94fa                      	DEC R15    //Decrementa arreglo de display 2
                                  
-0001e9 e09f                      	LDI R25, 0b00001111   //Bloquear R0
-0001ea 2e09                      	MOV R0, R25
+0001eb e09f                      	LDI R25, 0b00001111   //Bloquear R0
+0001ec 2e09                      	MOV R0, R25
                                  
-0001eb 2d9b                      	MOV R25, R11  //Mover registros
-0001ec 2dac                      	MOV R26, R12
-0001ed 2dbe                      	MOV R27, R14
-0001ee 2dcf                      	MOV R28, R15
+0001ed 2d9b                      	MOV R25, R11  //Mover registros
+0001ee 2dac                      	MOV R26, R12
+0001ef 2dbe                      	MOV R27, R14
+0001f0 2dcf                      	MOV R28, R15
                                  
-0001ef 30aa                      	CPI R26, 10   //Si display 2 llega a 9
-0001f0 f051                      	BREQ SUMA
+0001f1 30aa                      	CPI R26, 10   //Si display 2 llega a 9
+0001f2 f051                      	BREQ SUMA
                                  
-0001f1 30ca                      	CPI R28, 10  //Si display 4 llega a 9
-0001f2 f061                      	BREQ SUMA1
+0001f3 30ca                      	CPI R28, 10  //Si display 4 llega a 9
+0001f4 f061                      	BREQ SUMA1
                                  
-0001f3 3faf                      	CPI R26, -1   //Si display 2 llega a 0
-0001f4 f081                      	BREQ RESTA
+0001f5 3faf                      	CPI R26, -1   //Si display 2 llega a 0
+0001f6 f081                      	BREQ RESTA
                                  
-0001f5 3fcf                      	CPI R28, -1   //Si display 4 llega a 0
-0001f6 f0a9                      	BREQ RESTA1
+0001f7 3fcf                      	CPI R28, -1   //Si display 4 llega a 0
+0001f8 f0a9                      	BREQ RESTA1
                                  
-0001f7 3092                      	CPI R25, 2  //Si display 1 llega a 2
-0001f8 f530                      	BRSH REW
+0001f9 3092                      	CPI R25, 2  //Si display 1 llega a 2
+0001fa f530                      	BRSH REW
                                  
-0001f9 940c 033e                 	JMP ALARMA
+0001fb 940c 0340                 	JMP ALARMA
                                  
                                  SUMA:
-0001fb 94b3                      	INC R11       //Incrementar valor de display 1
-0001fc 24cc                      	CLR R12
-0001fd 940c 033e                 	JMP ALARMA
+0001fd 94b3                      	INC R11       //Incrementar valor de display 1
+0001fe 24cc                      	CLR R12
+0001ff 940c 0340                 	JMP ALARMA
                                  
                                  SUMA1:
-0001ff 94e3                      	INC R14    //Incrementar valor de display 3
-000200 30b5                      	CPI R27, 5   //Si display 3 llega a 5
-000201 f528                      	BRSH RREW
-000202 24ff                      	CLR R15
-000203 940c 033e                 	JMP ALARMA
+000201 94e3                      	INC R14    //Incrementar valor de display 3
+000202 30b5                      	CPI R27, 5   //Si display 3 llega a 5
+000203 f528                      	BRSH RREW
+000204 24ff                      	CLR R15
+000205 940c 0340                 	JMP ALARMA
                                  
                                  RESTA:
-000205 3090                      	CPI R25, 0      //Si display 1 esta en 0
-000206 f061                      	BREQ RESTA2
-000207 94ba                      	DEC R11
-000208 e0a9                      	LDI R26, 9
-000209 2eca                      	MOV R12, R26
-00020a 940c 033e                 	JMP ALARMA
+000207 3090                      	CPI R25, 0      //Si display 1 esta en 0
+000208 f061                      	BREQ RESTA2
+000209 94ba                      	DEC R11
+00020a e0a9                      	LDI R26, 9
+00020b 2eca                      	MOV R12, R26
+00020c 940c 0340                 	JMP ALARMA
                                  
                                  RESTA1:
-00020c 30b0                      	CPI R27, 0   //Si display 3 esta en 0
-00020d f059                      	BREQ RESTA3
-00020e 94ea                      	DEC R14
-00020f e0c9                      	LDI R28, 9
-000210 2efc                      	MOV R15, R28
-000211 940c 033e                 	JMP ALARMA
+00020e 30b0                      	CPI R27, 0   //Si display 3 esta en 0
+00020f f059                      	BREQ RESTA3
+000210 94ea                      	DEC R14
+000211 e0c9                      	LDI R28, 9
+000212 2efc                      	MOV R15, R28
+000213 940c 0340                 	JMP ALARMA
                                  
                                  RESTA2:
-000213 e092                      	LDI R25, 2     //Colocar limite inferior
-000214 e0a3                      	LDI R26, 3
-000215 2eb9                      	MOV R11, R25
-000216 2eca                      	MOV R12, R26
-000217 940c 033e                 	JMP ALARMA
+000215 e092                      	LDI R25, 2     //Colocar limite inferior
+000216 e0a3                      	LDI R26, 3
+000217 2eb9                      	MOV R11, R25
+000218 2eca                      	MOV R12, R26
+000219 940c 0340                 	JMP ALARMA
                                  
                                  RESTA3:
-000219 e095                      	LDI R25, 5    //Colocar limite inferior
-00021a e0a9                      	LDI R26, 9
-00021b 2ee9                      	MOV R14, R25
-00021c 2efa                      	MOV R15, R26
-00021d 940c 033e                 	JMP ALARMA
+00021b e095                      	LDI R25, 5    //Colocar limite inferior
+00021c e0a9                      	LDI R26, 9
+00021d 2ee9                      	MOV R14, R25
+00021e 2efa                      	MOV R15, R26
+00021f 940c 0340                 	JMP ALARMA
                                  
                                  REW:
-00021f 30a4                      	CPI R26, 4 //Si display 2 llega a 3
-000220 f410                      	BRSH  REW1
-000221 940c 033e                 	JMP ALARMA
+000221 30a4                      	CPI R26, 4 //Si display 2 llega a 3
+000222 f410                      	BRSH  REW1
+000223 940c 0340                 	JMP ALARMA
                                  
                                  REW1:
-000223 24bb                      	CLR R11   //Colocar limite superior
-000224 24cc                      	CLR R12
-000225 940c 033e                 	JMP ALARMA
+000225 24bb                      	CLR R11   //Colocar limite
+000226 24cc                      	CLR R12
+000227 940c 0340                 	JMP ALARMA
                                  	
                                  RREW:
-000227 24ee                      	CLR R14    //Colocar limite superior
-000228 24ff                      	CLR R15
-000229 940c 033e                 	JMP ALARMA
+000229 24ee                      	CLR R14    //Colocar limite 
+00022a 24ff                      	CLR R15
+00022b 940c 0340                 	JMP ALARMA
                                  	
                                  
                                  //*********************************MOSTRAR HORA********************************
                                  	HORA: 
                                  	   //Hacer la multiplexación
-00022b 940e 0253                 		CALL RETARDO
-00022d 9a30                      		SBI PINC, PC0  //Activar el 1er display
+00022d 940e 0255                 		CALL RETARDO
+00022f 9a30                      		SBI PINC, PC0  //Activar el 1er display
                                  	
-00022e e0f0                      		LDI ZH, HIGH(TABLA <<1)  //da el byte mas significativo
-00022f e8e4                      		LDI ZL, LOW(TABLA <<1) //va la dirección de TABLA
-000230 0fe3                      		ADD ZL, R19
-000231 9194                      		LPM R25,Z
-000232 b99b                      		OUT PORTD, R25
-000233 940e 0253                 		CALL RETARDO
-000235 9a30                      		SBI PINC, PC0  //Apagar el 1er display
-000236 9a31                      		SBI PINC, PC1   //Encender el 2do display
-                                 	
-                                 
-000237 e0f0                      		LDI ZH, HIGH(TABLA <<1)  //da el byte mas significativo
-000238 e8e4                      		LDI ZL, LOW(TABLA <<1) //va la dirección de TABLA
-000239 0fe4                      		ADD ZL, R20
-00023a 9194                      		LPM R25,Z
-00023b b99b                      		OUT PORTD, R25
-                                 
-00023c 940e 0253                 		CALL RETARDO
-00023e 9a31                      		SBI PINC, PC1  //Apagar el 2do display
-00023f 9a32                      		SBI PINC, PC2   //Encender el 3er display
+000230 e0f0                      		LDI ZH, HIGH(TABLA <<1)  //da el byte mas significativo
+000231 e8e4                      		LDI ZL, LOW(TABLA <<1) //va la dirección de TABLA
+000232 0fe3                      		ADD ZL, R19
+000233 9194                      		LPM R25,Z
+000234 b99b                      		OUT PORTD, R25
+000235 940e 0255                 		CALL RETARDO
+000237 9a30                      		SBI PINC, PC0  //Apagar el 1er display
+000238 9a31                      		SBI PINC, PC1   //Encender el 2do display
                                  	
                                  
-000240 e0f0                      		LDI ZH, HIGH(TABLA <<1)  //da el byte mas significativo
-000241 e8e4                      		LDI ZL, LOW(TABLA <<1) //va la dirección de TABLA
-000242 0fe5                      		ADD ZL, R21
-000243 9194                      		LPM R25,Z
-000244 b99b                      		OUT PORTD, R25
+000239 e0f0                      		LDI ZH, HIGH(TABLA <<1)  //da el byte mas significativo
+00023a e8e4                      		LDI ZL, LOW(TABLA <<1) //va la dirección de TABLA
+00023b 0fe4                      		ADD ZL, R20
+00023c 9194                      		LPM R25,Z
+00023d b99b                      		OUT PORTD, R25
                                  
-000245 940e 0253                 		CALL RETARDO
-000247 9a32                      		SBI PINC, PC2  //Apagar el 3er display
-000248 9a33                      		SBI PINC, PC3   //Encender el 4to display
+00023e 940e 0255                 		CALL RETARDO
+000240 9a31                      		SBI PINC, PC1  //Apagar el 2do display
+000241 9a32                      		SBI PINC, PC2   //Encender el 3er display
                                  	
-000249 e0f0                      		LDI ZH, HIGH(TABLA <<1)  //da el byte mas significativo
-00024a e8e4                      		LDI ZL, LOW(TABLA <<1) //va la dirección de TABLA
-00024b 0fe6                      		ADD ZL, R22
-00024c 9194                      		LPM R25,Z
-00024d b99b                      		OUT PORTD, R25
                                  
-00024e 940e 0253                 		CALL RETARDO
-000250 9a33                      		SBI PINC, PC3  //Apagar el 4to display
+000242 e0f0                      		LDI ZH, HIGH(TABLA <<1)  //da el byte mas significativo
+000243 e8e4                      		LDI ZL, LOW(TABLA <<1) //va la dirección de TABLA
+000244 0fe5                      		ADD ZL, R21
+000245 9194                      		LPM R25,Z
+000246 b99b                      		OUT PORTD, R25
+                                 
+000247 940e 0255                 		CALL RETARDO
+000249 9a32                      		SBI PINC, PC2  //Apagar el 3er display
+00024a 9a33                      		SBI PINC, PC3   //Encender el 4to display
+                                 	
+00024b e0f0                      		LDI ZH, HIGH(TABLA <<1)  //da el byte mas significativo
+00024c e8e4                      		LDI ZL, LOW(TABLA <<1) //va la dirección de TABLA
+00024d 0fe6                      		ADD ZL, R22
+00024e 9194                      		LPM R25,Z
+00024f b99b                      		OUT PORTD, R25
+                                 
+000250 940e 0255                 		CALL RETARDO
+000252 9a33                      		SBI PINC, PC3  //Apagar el 4to display
                                  		
-000251 940c 02e7                 JMP LOOPP
+000253 940c 02e9                 JMP LOOPP
                                  
                                  
                                  RETARDO:
-000253 3071                      	CPI R23, 1
-000254 f7f1                      	BRNE RETARDO
-000255 2777                      	CLR R23
-000256 9508                      	RET
+000255 3071                      	CPI R23, 1
+000256 f7f1                      	BRNE RETARDO
+000257 2777                      	CLR R23
+000258 9508                      	RET
                                  
                                  PARPADEO:
-000257 9a34                      	SBI PINC, PC4
-000258 2722                      	CLR R18
-000259 12d1                      	CPSE R13, R17   //Hacer la función solo una vez
-00025a 9a35                      		SBI PINC, PC5
+000259 9a34                      	SBI PINC, PC4
+00025a 2722                      	CLR R18
+00025b 12d1                      	CPSE R13, R17   //Hacer la función solo una vez
+00025c 9a35                      		SBI PINC, PC5
                                  
-00025b 940c 0063                 	JMP LOOP
+00025d 940c 0063                 	JMP LOOP
                                  
                                  
                                  MINUTOS:  
-00025d 9563                      	INC R22   //Incrementar minutos del display 4
-00025e 2788                      	CLR R24  //Resetear valor de R24
-00025f 306a                      	CPI R22, 10  
-000260 f021                      	BREQ MINUTOS2
+00025f 9563                      	INC R22   //Incrementar minutos del display 4
+000260 2788                      	CLR R24  //Resetear valor de R24
+000261 306a                      	CPI R22, 10  
+000262 f021                      	BREQ MINUTOS2
                                  
-000261 e0a3                      	LDI R26, 3
-000262 2e1a                      	MOV R1, R26  //Permitir la activación de la alarma otra vez
-000263 940c 0063                 	JMP LOOP
+000263 e0a3                      	LDI R26, 3
+000264 2e1a                      	MOV R1, R26  //Permitir la activación de la alarma otra vez
+000265 940c 0063                 	JMP LOOP
                                  
                                  MINUTOS2:
-000265 9553                      	INC R21  //Incrementar minutos del display 3
-000266 2766                      	CLR R22  //Poner a 0 el display 1
-000267 3056                      	CPI R21, 6
-000268 f011                      	BREQ HORAS
+000267 9553                      	INC R21  //Incrementar minutos del display 3
+000268 2766                      	CLR R22  //Poner a 0 el display 1
+000269 3056                      	CPI R21, 6
+00026a f011                      	BREQ HORAS
                                  
-000269 940c 0063                 	JMP LOOP
+00026b 940c 0063                 	JMP LOOP
                                  
                                  HORAS:
-00026b 9543                      	INC R20  //Incrementar horas de display 2
-00026c 2755                      	CLR R21  //Resetear display 3
-00026d 304a                      	CPI R20, 10 
-00026e f021                      	BREQ HORAS2
-00026f 3032                      	CPI R19, 2
-000270 f031                      	BREQ HORAS24
+00026d 9543                      	INC R20  //Incrementar horas de display 2
+00026e 2755                      	CLR R21  //Resetear display 3
+00026f 304a                      	CPI R20, 10 
+000270 f021                      	BREQ HORAS2
+000271 3032                      	CPI R19, 2
+000272 f031                      	BREQ HORAS24
                                  
-000271 940c 0063                 	JMP LOOP
+000273 940c 0063                 	JMP LOOP
                                  
                                  HORAS2:
-000273 9533                      	INC R19  //Incrementar horas de display 1 
-000274 2744                      	CLR R20
+000275 9533                      	INC R19  //Incrementar horas de display 1 
+000276 2744                      	CLR R20
                                  
-000275 940c 0063                 	JMP LOOP
+000277 940c 0063                 	JMP LOOP
                                  
                                  HORAS24:
-000277 3044                      	CPI R20, 4 
-000278 f011                      	BREQ FIN
+000279 3044                      	CPI R20, 4 
+00027a f011                      	BREQ FIN
                                  
-000279 940c 0063                 	JMP LOOP
+00027b 940c 0063                 	JMP LOOP
                                  	
                                  
                                  FIN:
-00027b 2db3                      	MOV R27, R3 //Mover registro 3 a 27
-00027c 2d99                      	MOV R25, R9   //Meses que han pasado
+00027d 2db3                      	MOV R27, R3 //Mover registro 3 a 27
+00027e 2d99                      	MOV R25, R9   //Meses que han pasado
                                  
-00027d 2733                      	CLR R19  //Resetea todo el reloj 
-00027e 2744                      	CLR R20 
-00027f 95b3                      	INC R27   //Incrementar el display de dias
-000280 9463                      	INC R6   //Incrementar el contador de días totales
+00027f 2733                      	CLR R19  //Resetea todo el reloj 
+000280 2744                      	CLR R20 
+000281 95b3                      	INC R27   //Incrementar el display de dias
+000282 9463                      	INC R6   //Incrementar el contador de días totales
                                  	 
-000281 3091                      	CPI R25, 1 //ENERO
-000282 f0f9                      	BREQ SS31
+000283 3091                      	CPI R25, 1 //ENERO
+000284 f0f9                      	BREQ SS31
                                  
-000283 3092                      	CPI R25, 2 //FEBRERO
-000284 f119                      	BREQ SS28
+000285 3092                      	CPI R25, 2 //FEBRERO
+000286 f119                      	BREQ SS28
                                  
-000285 3093                      	CPI R25, 3  //MARZO
-000286 f0d9                      	BREQ SS31
+000287 3093                      	CPI R25, 3  //MARZO
+000288 f0d9                      	BREQ SS31
                                  
-000287 3094                      	CPI R25, 4  //ABRIL
-000288 f0e1                      	BREQ SS30
+000289 3094                      	CPI R25, 4  //ABRIL
+00028a f0e1                      	BREQ SS30
                                  
-000289 3095                      	CPI R25, 5   //MAYO
-00028a f0b9                      	BREQ SS31
+00028b 3095                      	CPI R25, 5   //MAYO
+00028c f0b9                      	BREQ SS31
                                  
-00028b 3096                      	CPI R25, 6  //JUNIO
-00028c f0c1                      	BREQ SS30
+00028d 3096                      	CPI R25, 6  //JUNIO
+00028e f0c1                      	BREQ SS30
                                  
-00028d 3097                      	CPI R25, 7  //JULIO
-00028e f099                      	BREQ SS31
+00028f 3097                      	CPI R25, 7  //JULIO
+000290 f099                      	BREQ SS31
                                  
-00028f 3098                      	CPI R25, 8  //AGOSTO
-000290 f089                      	BREQ SS31
+000291 3098                      	CPI R25, 8  //AGOSTO
+000292 f089                      	BREQ SS31
                                  
-000291 3099                      	CPI R25, 9   //SEPTIEMBRE
-000292 f091                      	BREQ SS30
+000293 3099                      	CPI R25, 9   //SEPTIEMBRE
+000294 f091                      	BREQ SS30
                                  
-000293 309a                      	CPI R25, 10   //OCTUBRE
-000294 f069                      	BREQ SS31
+000295 309a                      	CPI R25, 10   //OCTUBRE
+000296 f069                      	BREQ SS31
                                  
-000295 309b                      	CPI R25, 11    //NOVIEMBRE
-000296 f071                      	BREQ SS30
+000297 309b                      	CPI R25, 11    //NOVIEMBRE
+000298 f071                      	BREQ SS30
                                  
-000297 309c                      	CPI R25, 12  //DICIEMBRE
-000298 f049                      	BREQ SS31
+000299 309c                      	CPI R25, 12  //DICIEMBRE
+00029a f049                      	BREQ SS31
                                  
-000299 940c 0063                 	JMP LOOP
+00029b 940c 0063                 	JMP LOOP
                                  
                                  	INTERF:
-00029b 166d                      		CP R6, R29  //Cuando se llega al dia total del mes, desde enero hasta diciembre, dependiendo del dia final de cada mes
-00029c f0a9                      	    BREQ FINN
-00029d 30ba                      		CPI R27, 10  //Cuando el display de dias llegue a 10 
-00029e f061                      		BREQ FECHA1	
+00029d 166d                      		CP R6, R29  //Cuando se llega al dia total del mes, desde enero hasta diciembre, dependiendo del dia final de cada mes
+00029e f0a9                      	    BREQ FINN
+00029f 30ba                      		CPI R27, 10  //Cuando el display de dias llegue a 10 
+0002a0 f061                      		BREQ FECHA1	
                                  
-00029f 2e3b                      		MOV R3, R27 //Mover registro 27 a 3
+0002a1 2e3b                      		MOV R3, R27 //Mover registro 27 a 3
                                  
-0002a0 940c 0063                 		JMP LOOP
+0002a2 940c 0063                 		JMP LOOP
                                  
                                  SS31:
-0002a2 e2d0                      	LDI R29, 32
-0002a3 940c 029b                 	JMP INTERF
+0002a4 e2d0                      	LDI R29, 32
+0002a5 940c 029d                 	JMP INTERF
                                  
                                  SS30:
-0002a5 e1df                      	LDI R29, 31
-0002a6 940c 029b                 	JMP INTERF
+0002a7 e1df                      	LDI R29, 31
+0002a8 940c 029d                 	JMP INTERF
                                  
                                  SS28:
-0002a8 e1dd                      	LDI R29, 29
-0002a9 940c 029b                 	JMP INTERF
+0002aa e1dd                      	LDI R29, 29
+0002ab 940c 029d                 	JMP INTERF
                                  
                                  
                                  FECHA1:
-0002ab 2da2                      	MOV R26, R2 //Mover registro 2 a 26
+0002ad 2da2                      	MOV R26, R2 //Mover registro 2 a 26
                                  
-0002ac 95a3                      	INC R26  //Incrementar display 2 de dias
-0002ad e0b0                      	LDI R27, 0 //Resetear el display 1 de dias
+0002ae 95a3                      	INC R26  //Incrementar display 2 de dias
+0002af e0b0                      	LDI R27, 0 //Resetear el display 1 de dias
                                  
-0002ae 2e3b                      	MOV R3, R27 //Mover registro 27 a 3
-0002af 2e2a                      	MOV R2, R26 //Mover registro 26 a 2
+0002b0 2e3b                      	MOV R3, R27 //Mover registro 27 a 3
+0002b1 2e2a                      	MOV R2, R26 //Mover registro 26 a 2
                                  
-0002b0 940c 0063                 	JMP LOOP
+0002b2 940c 0063                 	JMP LOOP
                                  
                                  FINN:
-0002b2 2da2                      	MOV R26, R2 //Mover registro 2 a 26
-0002b3 2db3                      	MOV R27, R3 //Mover registro 3 a 27
-0002b4 2dd5                      	MOV R29, R5 //Mover registro 5 a 29
-0002b5 2dc4                      	MOV R28, R4 //Mover registro 4 a 28
+0002b4 2da2                      	MOV R26, R2 //Mover registro 2 a 26
+0002b5 2db3                      	MOV R27, R3 //Mover registro 3 a 27
+0002b6 2dd5                      	MOV R29, R5 //Mover registro 5 a 29
+0002b7 2dc4                      	MOV R28, R4 //Mover registro 4 a 28
                                  
-0002b6 e091                      	LDI R25, 1
-0002b7 2e69                      	MOV R6, R25 //Limpia registro de conteo de dia total
-0002b8 27aa                      	CLR R26
-0002b9 e0b1                      	LDI R27, 1
-0002ba 95d3                      	INC R29  //Incrementa los meses  display 4
-0002bb 9493                      	INC R9 //Incrementa contador de meses
-0002bc 30da                      	CPI R29, 10
-0002bd f081                      	BREQ MESES
-0002be 30c1                      	CPI R28, 1  //Cuando llegue el display 3 a mostar su maximo valor
-0002bf f031                      	BREQ FINMES
+0002b8 e091                      	LDI R25, 1
+0002b9 2e69                      	MOV R6, R25 //Limpia registro de conteo de dia total
+0002ba 27aa                      	CLR R26
+0002bb e0b1                      	LDI R27, 1
+0002bc 95d3                      	INC R29  //Incrementa los meses  display 4
+0002bd 9493                      	INC R9 //Incrementa contador de meses
+0002be 30da                      	CPI R29, 10
+0002bf f081                      	BREQ MESES
+0002c0 30c1                      	CPI R28, 1  //Cuando llegue el display 3 a mostar su maximo valor
+0002c1 f031                      	BREQ FINMES
                                  
-0002c0 2e3b                      	MOV R3, R27 //Mover registro 27 a 3
-0002c1 2e2a                      	MOV R2, R26 //Mover registro 26 a 2
-0002c2 2e4c                      	MOV R4, R28  //Mover registro 28 a 4
-0002c3 2e5d                      	MOV R5, R29  //Mover registro 29 a 5
+0002c2 2e3b                      	MOV R3, R27 //Mover registro 27 a 3
+0002c3 2e2a                      	MOV R2, R26 //Mover registro 26 a 2
+0002c4 2e4c                      	MOV R4, R28  //Mover registro 28 a 4
+0002c5 2e5d                      	MOV R5, R29  //Mover registro 29 a 5
                                  
-0002c4 940c 0063                 	JMP LOOP
+0002c6 940c 0063                 	JMP LOOP
                                  
                                  
                                  
                                  
                                  FINMES:
-0002c6 30d3                      	CPI R29, 3  //Cuando los meses lleguen a diciembre
-0002c7 f470                      	BRSH FINTOTAL
+0002c8 30d3                      	CPI R29, 3  //Cuando los meses lleguen a diciembre
+0002c9 f470                      	BRSH FINTOTAL
                                  
-0002c8 2e3b                      	MOV R3, R27 //Mover registro 27 a 3
-0002c9 2e2a                      	MOV R2, R26 //Mover registro 26 a 2
-0002ca 2e4c                      	MOV R4, R28  //Mover registro 28 a 4
-0002cb 2e5d                      	MOV R5, R29  //Mover registro 29 a 5
+0002ca 2e3b                      	MOV R3, R27 //Mover registro 27 a 3
+0002cb 2e2a                      	MOV R2, R26 //Mover registro 26 a 2
+0002cc 2e4c                      	MOV R4, R28  //Mover registro 28 a 4
+0002cd 2e5d                      	MOV R5, R29  //Mover registro 29 a 5
                                  
-0002cc 940c 0063                 	JMP LOOP
+0002ce 940c 0063                 	JMP LOOP
                                  
                                  MESES:
-0002ce 95c3                      	INC R28 //Incrementar contador de meses display 3
-0002cf 27dd                      	CLR R29 
+0002d0 95c3                      	INC R28 //Incrementar contador de meses display 3
+0002d1 27dd                      	CLR R29 
                                  
-0002d0 2e3b                      	MOV R3, R27 //Mover registro 27 a 3
-0002d1 2e2a                      	MOV R2, R26 //Mover registro 26 a 2
-0002d2 2e4c                      	MOV R4, R28  //Mover registro 28 a 4
-0002d3 2e5d                      	MOV R5, R29  //Mover registro 29 a 5
+0002d2 2e3b                      	MOV R3, R27 //Mover registro 27 a 3
+0002d3 2e2a                      	MOV R2, R26 //Mover registro 26 a 2
+0002d4 2e4c                      	MOV R4, R28  //Mover registro 28 a 4
+0002d5 2e5d                      	MOV R5, R29  //Mover registro 29 a 5
                                  
-0002d4 940c 0063                 	JMP LOOP
+0002d6 940c 0063                 	JMP LOOP
                                  
                                  FINTOTAL:   //Si el reloj en general llega a 23:59, dia-mes:12
-0002d6 2da2                      	MOV R26, R2 //Mover registro 2 a 26
-0002d7 2db3                      	MOV R27, R3 //Mover registro 3 a 27
-0002d8 2dd5                      	MOV R29, R5 //Mover registro 5 a 29
-0002d9 2dc4                      	MOV R28, R4 //Mover registro 4 a 28
+0002d8 2da2                      	MOV R26, R2 //Mover registro 2 a 26
+0002d9 2db3                      	MOV R27, R3 //Mover registro 3 a 27
+0002da 2dd5                      	MOV R29, R5 //Mover registro 5 a 29
+0002db 2dc4                      	MOV R28, R4 //Mover registro 4 a 28
                                  
-0002da 27cc                      	CLR R28
-0002db 27aa                      	CLR R26
-0002dc e0d1                      	LDI R29, 1
-0002dd e0b1                      	LDI R27, 1
-0002de 2e9b                      	MOV R9, R27 //Resetear los meses
-0002df 2e6b                      	MOV R6, R27 //Limpia registro de conteo de dia total
-0002e0 2f9b                      	MOV R25, R27
-0002e1 2e3b                      	MOV R3, R27 //Mover registro 27 a 3
-0002e2 2e2a                      	MOV R2, R26 //Mover registro 26 a 2
-0002e3 2e4c                      	MOV R4, R28  //Mover registro 28 a 4
-0002e4 2e5d                      	MOV R5, R29  //Mover registro 29 a 5
+0002dc 27cc                      	CLR R28
+0002dd 27aa                      	CLR R26
+0002de e0d1                      	LDI R29, 1
+0002df e0b1                      	LDI R27, 1
+0002e0 2e9b                      	MOV R9, R27 //Resetear los meses
+0002e1 2e6b                      	MOV R6, R27 //Limpia registro de conteo de dia total
+0002e2 2f9b                      	MOV R25, R27
+0002e3 2e3b                      	MOV R3, R27 //Mover registro 27 a 3
+0002e4 2e2a                      	MOV R2, R26 //Mover registro 26 a 2
+0002e5 2e4c                      	MOV R4, R28  //Mover registro 28 a 4
+0002e6 2e5d                      	MOV R5, R29  //Mover registro 29 a 5
                                  
-0002e5 940c 0063                 	JMP LOOP
+0002e7 940c 0063                 	JMP LOOP
                                  
                                  LOOPP:
                                  	
-0002e7 2d9c                          MOV R25, R12
-0002e8 2daf                      	MOV R26, R15
-0002e9 2dbb                      	MOV R27, R11
-0002ea 2dce                      	MOV R28, R14
+0002e9 2d9c                          MOV R25, R12
+0002ea 2daf                      	MOV R26, R15
+0002eb 2dbb                      	MOV R27, R11
+0002ec 2dce                      	MOV R28, R14
                                  
-0002eb 3091                      	CPI R25, 1  //Alarma encendida
-0002ec f440                      	BRSH APAGAR2 
+0002ed 3091                      	CPI R25, 1  //Alarma encendida
+0002ee f440                      	BRSH APAGAR2 
                                  
-0002ed 30a1                      	CPI R26, 1   //Alarma encendida
-0002ee f430                      	BRSH APAGAR2
+0002ef 30a1                      	CPI R26, 1   //Alarma encendida
+0002f0 f430                      	BRSH APAGAR2
                                  
-0002ef 30b1                      	CPI R27, 1  //Alarma encendida
-0002f0 f420                      	BRSH APAGAR2   
+0002f1 30b1                      	CPI R27, 1  //Alarma encendida
+0002f2 f420                      	BRSH APAGAR2   
                                  
-0002f1 30c1                      	CPI R28, 1   //Alarma encendida
-0002f2 f410                      	BRSH APAGAR2
+0002f3 30c1                      	CPI R28, 1   //Alarma encendida
+0002f4 f410                      	BRSH APAGAR2
                                  
-0002f3 940c 0063                 	JMP LOOP
+0002f5 940c 0063                 	JMP LOOP
                                  
                                  APAGAR2:
-0002f5 16b3                      	CP R11, R19   //Si los registros son iguales
-0002f6 f011                      	BREQ SEGUIR1
-0002f7 940c 0063                 	JMP LOOP
+0002f7 16b3                      	CP R11, R19   //Si los registros son iguales
+0002f8 f011                      	BREQ SEGUIR1
+0002f9 940c 0063                 	JMP LOOP
                                  
                                  SEGUIR1:
-0002f9 16c4                      	CP R12, R20  
-0002fa f011                      	BREQ SEGUIR2
-0002fb 940c 0063                 	JMP LOOP
+0002fb 16c4                      	CP R12, R20  
+0002fc f011                      	BREQ SEGUIR2
+0002fd 940c 0063                 	JMP LOOP
                                  
                                  SEGUIR2:
-0002fd 16e5                      	CP R14, R21
-0002fe f011                      	BREQ SEGUIR3
-0002ff 940c 0063                 	JMP LOOP
+0002ff 16e5                      	CP R14, R21
+000300 f011                      	BREQ SEGUIR3
+000301 940c 0063                 	JMP LOOP
                                  
                                  SEGUIR3:
-000301 16f6                      	CP R15, R22
-000302 f011                      	BREQ ACTIVANO
-000303 940c 0063                 	JMP LOOP
+000303 16f6                      	CP R15, R22
+000304 f011                      	BREQ ACTIVANO
+000305 940c 0063                 	JMP LOOP
                                  
                                  ACTIVANO:
-000305 3001                      	CPI R16, 1    //Ver si la alarma esta encendida 
-000306 f011                      		BREQ SEGUIR47
-000307 940c 0063                 	JMP LOOP
+000307 3001                      	CPI R16, 1    //Ver si la alarma esta encendida 
+000308 f011                      		BREQ SEGUIR47
+000309 940c 0063                 	JMP LOOP
                                  
                                  SEGUIR47:
-000309 2d91                      	MOV R25, R1
-00030a 3092                      	CPI R25, 2
-00030b f039                      	BREQ QQQ 
+00030b 2d91                      	MOV R25, R1
+00030c 3092                      	CPI R25, 2
+00030d f039                      	BREQ QQQ 
                                  
                                  SEGUIR41:	 
-00030c e110                      	LDI R17, 16    
-00030d ec99                          LDI R25, 0b11001001   //Encender la alarma 
-00030e b99b                      	OUT PORTD, R25
-00030f e09f                      	LDI R25, 0b0001111
-000310 b998                      	OUT PORTC, R25
-000311 940c 0063                 	JMP LOOP
+00030e e110                      	LDI R17, 16    
+00030f ec99                          LDI R25, 0b11001001   //Encender la alarma 
+000310 b99b                      	OUT PORTD, R25
+000311 e09f                      	LDI R25, 0b0001111
+000312 b998                      	OUT PORTC, R25
+000313 940c 0063                 	JMP LOOP
                                  
                                  QQQ:
-000313 940c 0063                 	JMP LOOP
+000315 940c 0063                 	JMP LOOP
                                  	
                                  //********************************MOSTRAR FECHA********************************
                                  FECHA:
                                    //Hacer la multiplexación
-000315 940e 0253                 		CALL RETARDO
-000317 e020                      		LDI R18, 0  //Impedir que aumente
-000318 9a30                      		SBI PINC, PC0  //Activar el 1er display
+000317 940e 0255                 		CALL RETARDO
+000319 e020                      		LDI R18, 0  //Impedir que aumente
+00031a 9a30                      		SBI PINC, PC0  //Activar el 1er display
                                  	
-000319 e0f0                      		LDI ZH, HIGH(TABLA <<1)  //da el byte mas significativo
-00031a e8e4                      		LDI ZL, LOW(TABLA <<1) //va la dirección de TABLA
-00031b 0de2                      		ADD ZL, R2
-00031c 9194                      		LPM R25,Z
-00031d b99b                      		OUT PORTD, R25
+00031b e0f0                      		LDI ZH, HIGH(TABLA <<1)  //da el byte mas significativo
+00031c e8e4                      		LDI ZL, LOW(TABLA <<1) //va la dirección de TABLA
+00031d 0de2                      		ADD ZL, R2
+00031e 9194                      		LPM R25,Z
+00031f b99b                      		OUT PORTD, R25
                                  
-00031e 940e 0253                 		CALL RETARDO
-000320 9a30                      		SBI PINC, PC0  //Apagar el 1er display
-000321 9a31                      		SBI PINC, PC1   //Encender el 2do display
-                                 	
-                                 
-000322 e0f0                      		LDI ZH, HIGH(TABLA <<1)  //da el byte mas significativo
-000323 e8e4                      		LDI ZL, LOW(TABLA <<1) //va la dirección de TABLA
-000324 0de3                      		ADD ZL, R3
-000325 9194                      		LPM R25,Z
-000326 b99b                      		OUT PORTD, R25
-                                 
-000327 940e 0253                 		CALL RETARDO
-000329 9a31                      		SBI PINC, PC1  //Apagar el 2do display
-00032a 9a32                      		SBI PINC, PC2   //Encender el 3er display
+000320 940e 0255                 		CALL RETARDO
+000322 9a30                      		SBI PINC, PC0  //Apagar el 1er display
+000323 9a31                      		SBI PINC, PC1   //Encender el 2do display
                                  	
                                  
-00032b e0f0                      		LDI ZH, HIGH(TABLA <<1)  //da el byte mas significativo
-00032c e8e4                      		LDI ZL, LOW(TABLA <<1) //va la dirección de TABLA
-00032d 0de4                      		ADD ZL, R4
-00032e 9194                      		LPM R25,Z
-00032f b99b                      		OUT PORTD, R25
+000324 e0f0                      		LDI ZH, HIGH(TABLA <<1)  //da el byte mas significativo
+000325 e8e4                      		LDI ZL, LOW(TABLA <<1) //va la dirección de TABLA
+000326 0de3                      		ADD ZL, R3
+000327 9194                      		LPM R25,Z
+000328 b99b                      		OUT PORTD, R25
                                  
-000330 940e 0253                 		CALL RETARDO
-000332 9a32                      		SBI PINC, PC2  //Apagar el 3er display
-000333 9a33                      		SBI PINC, PC3   //Encender el 4to display
+000329 940e 0255                 		CALL RETARDO
+00032b 9a31                      		SBI PINC, PC1  //Apagar el 2do display
+00032c 9a32                      		SBI PINC, PC2   //Encender el 3er display
                                  	
-000334 e0f0                      		LDI ZH, HIGH(TABLA <<1)  //da el byte mas significativo
-000335 e8e4                      		LDI ZL, LOW(TABLA <<1) //va la dirección de TABLA
-000336 0de5                      		ADD ZL, R5
-000337 9194                      		LPM R25,Z
-000338 b99b                      		OUT PORTD, R25
                                  
-000339 940e 0253                 		CALL RETARDO
-00033b 9a33                      		SBI PINC, PC3  //Apagar el 4to display
+00032d e0f0                      		LDI ZH, HIGH(TABLA <<1)  //da el byte mas significativo
+00032e e8e4                      		LDI ZL, LOW(TABLA <<1) //va la dirección de TABLA
+00032f 0de4                      		ADD ZL, R4
+000330 9194                      		LPM R25,Z
+000331 b99b                      		OUT PORTD, R25
+                                 
+000332 940e 0255                 		CALL RETARDO
+000334 9a32                      		SBI PINC, PC2  //Apagar el 3er display
+000335 9a33                      		SBI PINC, PC3   //Encender el 4to display
+                                 	
+000336 e0f0                      		LDI ZH, HIGH(TABLA <<1)  //da el byte mas significativo
+000337 e8e4                      		LDI ZL, LOW(TABLA <<1) //va la dirección de TABLA
+000338 0de5                      		ADD ZL, R5
+000339 9194                      		LPM R25,Z
+00033a b99b                      		OUT PORTD, R25
+                                 
+00033b 940e 0255                 		CALL RETARDO
+00033d 9a33                      		SBI PINC, PC3  //Apagar el 4to display
                                  
                                  	
-00033c 940c 0063                 JMP LOOP//Regresa al LOOP
+00033e 940c 0063                 JMP LOOP//Regresa al LOOP
                                  
                                  
                                  //*********************************MOSTRAR Alarma********************************
                                  ALARMA: 
                                  	   //Hacer la multiplexación
-00033e 940e 0253                 		CALL RETARDO
-000340 9a30                      		SBI PINC, PC0  //Activar el 1er display
+000340 940e 0255                 		CALL RETARDO
+000342 9a30                      		SBI PINC, PC0  //Activar el 1er display
+000343 2ed1                      		MOV R13, R17
+000344 e0f0                      		LDI ZH, HIGH(TABLA <<1)  //da el byte mas significativo
+000345 e8e4                      		LDI ZL, LOW(TABLA <<1) //va la dirección de TABLA
+000346 0deb                      		ADD ZL, R11
+000347 9194                      		LPM R25,Z
+000348 b99b                      		OUT PORTD, R25
+000349 940e 0255                 		CALL RETARDO
+00034b 9a30                      		SBI PINC, PC0  //Apagar el 1er display
+00034c 9a31                      		SBI PINC, PC1   //Encender el 2do display
                                  	
-000341 e0f0                      		LDI ZH, HIGH(TABLA <<1)  //da el byte mas significativo
-000342 e8e4                      		LDI ZL, LOW(TABLA <<1) //va la dirección de TABLA
-000343 0deb                      		ADD ZL, R11
-000344 9194                      		LPM R25,Z
-000345 b99b                      		OUT PORTD, R25
-000346 940e 0253                 		CALL RETARDO
-000348 9a30                      		SBI PINC, PC0  //Apagar el 1er display
-000349 9a31                      		SBI PINC, PC1   //Encender el 2do display
-                                 	
-00034a e0f0                      		LDI ZH, HIGH(TABLA <<1)  //da el byte mas significativo
-00034b e8e4                      		LDI ZL, LOW(TABLA <<1) //va la dirección de TABLA
-00034c 0dec                      		ADD ZL, R12
-00034d 9194                      		LPM R25,Z
-00034e b99b                      		OUT PORTD, R25
+00034d e0f0                      		LDI ZH, HIGH(TABLA <<1)  //da el byte mas significativo
+00034e e8e4                      		LDI ZL, LOW(TABLA <<1) //va la dirección de TABLA
+00034f 0dec                      		ADD ZL, R12
+000350 9194                      		LPM R25,Z
+000351 b99b                      		OUT PORTD, R25
                                  
-00034f 940e 0253                 		CALL RETARDO
-000351 9a31                      		SBI PINC, PC1  //Apagar el 2do display
-000352 9a32                      		SBI PINC, PC2   //Encender el 3er display
+000352 940e 0255                 		CALL RETARDO
+000354 9a31                      		SBI PINC, PC1  //Apagar el 2do display
+000355 9a32                      		SBI PINC, PC2   //Encender el 3er display
                                  	
-000353 e0f0                      		LDI ZH, HIGH(TABLA <<1)  //da el byte mas significativo
-000354 e8e4                      		LDI ZL, LOW(TABLA <<1) //va la dirección de TABLA
-000355 0dee                      		ADD ZL, R14
-000356 9194                      		LPM R25,Z
-000357 b99b                      		OUT PORTD, R25
+000356 e0f0                      		LDI ZH, HIGH(TABLA <<1)  //da el byte mas significativo
+000357 e8e4                      		LDI ZL, LOW(TABLA <<1) //va la dirección de TABLA
+000358 0dee                      		ADD ZL, R14
+000359 9194                      		LPM R25,Z
+00035a b99b                      		OUT PORTD, R25
                                  
-000358 940e 0253                 		CALL RETARDO
-00035a 9a32                      		SBI PINC, PC2  //Apagar el 3er display
-00035b 9a33                      		SBI PINC, PC3   //Encender el 4to display
+00035b 940e 0255                 		CALL RETARDO
+00035d 9a32                      		SBI PINC, PC2  //Apagar el 3er display
+00035e 9a33                      		SBI PINC, PC3   //Encender el 4to display
                                  	
-00035c e0f0                      		LDI ZH, HIGH(TABLA <<1)  //da el byte mas significativo
-00035d e8e4                      		LDI ZL, LOW(TABLA <<1) //va la dirección de TABLA
-00035e 0def                      		ADD ZL, R15
-00035f 9194                      		LPM R25,Z
-000360 b99b                      		OUT PORTD, R25
+00035f e0f0                      		LDI ZH, HIGH(TABLA <<1)  //da el byte mas significativo
+000360 e8e4                      		LDI ZL, LOW(TABLA <<1) //va la dirección de TABLA
+000361 0def                      		ADD ZL, R15
+000362 9194                      		LPM R25,Z
+000363 b99b                      		OUT PORTD, R25
                                  
-000361 940e 0253                 		CALL RETARDO
-000363 9a33                      		SBI PINC, PC3  //Apagar el 4to display
+000364 940e 0255                 		CALL RETARDO
+000366 9a33                      		SBI PINC, PC3  //Apagar el 4to display
                                  	
-000364 940c 0063                 JMP LOOP//Regresa al LOOP
+000367 940c 0063                 JMP LOOP//Regresa al LOOP
                                  
                                  
                                  APAGAR:
-000366 3001                      	CPI R16, 1   //Comprobar si la alarma ya esta activada
-000367 f021                      		BREQ SALTO1
+000369 3001                      	CPI R16, 1   //Comprobar si la alarma ya esta activada
+00036a f021                      		BREQ SALTO1
                                  
-000368 13a1                      	CPSE R26, R17   //Hacer la función solo una vez
-000369 e000                      			LDI R16, 0
+00036b 13a1                      	CPSE R26, R17   //Hacer la función solo una vez
+00036c e000                      			LDI R16, 0
                                  
-00036a 13a1                      	CPSE R26, R17   //Hacer la función solo una vez
-00036b 2fa1                      			MOV R26, R17 //Mover registro 17 a 25
+00036d 13a1                      	CPSE R26, R17   //Hacer la función solo una vez
+00036e 2fa1                      			MOV R26, R17 //Mover registro 17 a 25
                                  
                                  	SALTO1:
-00036c fe00                      		SBRS R0, PB0 // Salta si el bit del registro es 0 
-00036d 940c 0392                 			JMP ALARMAON
+00036f fe00                      		SBRS R0, PB0 // Salta si el bit del registro es 0 
+000370 940c 0396                 			JMP ALARMAON
                                  
-00036f fe01                      		SBRS R0, PB1 // Salta si el bit del registro es 0 
-000370 940c 0397                 			JMP ALARMAOFF
+000372 fe01                      		SBRS R0, PB1 // Salta si el bit del registro es 0 
+000373 940c 039b                 			JMP ALARMAOFF
                                  
-000372 3001                      		CPI R16, 1     //Si la alarma esta encendida
-000373 f0f1                      			BREQ ALARMAON
+000375 3001                      		CPI R16, 1     //Si la alarma esta encendida
+000376 f0f9                      			BREQ ALARMAON
                                  
-000374 3000                      		CPI R16, 0    //Si la alarma esta apagada
-000375 f109                      		BREQ ALARMAOFF
+000377 3000                      		CPI R16, 0    //Si la alarma esta apagada
+000378 f111                      		BREQ ALARMAOFF
                                  
-000376 940c 0378                 	JMP MOSTRARALARMA
+000379 940c 037b                 	JMP MOSTRARALARMA
                                  
                                  
                                  MOSTRARALARMA:
                                  	 //Hacer la multiplexación
-000378 940e 0253                 		CALL RETARDO
-00037a 9a30                      		SBI PINC, PC0  //Activar el 1er display
-                                 
-00037b e3cf                      		LDI R28, 0b00111111
-00037c b9cb                      		OUT PORTD, R28
-                                 	
-00037d 940e 0253                 		CALL RETARDO
-00037f 9a30                      		SBI PINC, PC0  //Apagar el 1er display
-000380 9a31                      		SBI PINC, PC1   //Encender el 2do display
-                                 
-000381 b99b                      		OUT PORTD, R25
-                                 
-000382 940e 0253                 		CALL RETARDO
-000384 9a31                      		SBI PINC, PC1  //Apagar el 2do display
-000385 9a32                      		SBI PINC, PC2   //Encender el 3er display
+00037b 940e 0255                 		CALL RETARDO
+00037d 9a30                      		SBI PINC, PC0  //Activar el 1er display
+00037e 9a34                      		SBI PINC, PC4
                                  		
-000386 b9db                      		OUT PORTD, R29
-                                 
-000387 940e 0253                 		CALL RETARDO
-000389 9a32                      		SBI PINC, PC2  //Apagar el 3er display
-00038a 9a33                      		SBI PINC, PC3   //Encender el 4to display
-                                 
-00038b e098                      		LDI R25, 0b00001000
-00038c b99b                      		OUT PORTD, R25
-                                 		
-00038d 940e 0253                 		CALL RETARDO
-00038f 9a33                      		SBI PINC, PC3  //Apagar el 4to display
+00037f e3cf                      		LDI R28, 0b00111111
+000380 b9cb                      		OUT PORTD, R28
                                  	
-000390 940c 0063                 JMP LOOP//Regresa al LOOP
+000381 940e 0255                 		CALL RETARDO
+000383 9a30                      		SBI PINC, PC0  //Apagar el 1er display
+000384 9a31                      		SBI PINC, PC1   //Encender el 2do display
+                                 
+000385 b99b                      		OUT PORTD, R25
+                                 
+000386 940e 0255                 		CALL RETARDO
+000388 9a31                      		SBI PINC, PC1  //Apagar el 2do display
+000389 9a32                      		SBI PINC, PC2   //Encender el 3er display
+                                 		
+00038a b9db                      		OUT PORTD, R29
+                                 
+00038b 940e 0255                 		CALL RETARDO
+00038d 9a32                      		SBI PINC, PC2  //Apagar el 3er display
+00038e 9a33                      		SBI PINC, PC3   //Encender el 4to display
+                                 
+00038f e098                      		LDI R25, 0b00001000
+000390 b99b                      		OUT PORTD, R25
+                                 		
+000391 940e 0255                 		CALL RETARDO
+000393 9a33                      		SBI PINC, PC3  //Apagar el 4to display
+                                 	
+000394 940c 0063                 JMP LOOP//Regresa al LOOP
                                  
                                  ALARMAON:        //Alarma encendida
-000392 e001                      	LDI R16, 1
-000393 e397                      	LDI R25, 0b00110111 
-000394 e0d8                      	LDI R29, 0b00001000
-000395 940c 0378                 	JMP MOSTRARALARMA
+000396 e001                      	LDI R16, 1
+000397 e397                      	LDI R25, 0b00110111 
+000398 e0d8                      	LDI R29, 0b00001000
+000399 940c 037b                 	JMP MOSTRARALARMA
                                  
                                  ALARMAOFF:
-000397 e000                      	LDI R16, 0      //Alarma apagada
-000398 e791                      	LDI R25, 0b01110001
-000399 e7d1                      	LDI R29, 0b01110001
-00039a 940c 0378                 	JMP MOSTRARALARMA
+00039b e000                      	LDI R16, 0      //Alarma apagada
+00039c e791                      	LDI R25, 0b01110001
+00039d e7d1                      	LDI R29, 0b01110001
+00039e 940c 037b                 	JMP MOSTRARALARMA
                                  
                                  ;**************************Inicio TIMER0***************************************		
                                  INITTIMER0:     //Arrancar el TIMER0
-00039c e010                      	LDI R17, 0
-00039d bd14                      	OUT TCCR0A, R17 //trabajar de forma normal con el temporizador
+0003a0 e010                      	LDI R17, 0
+0003a1 bd14                      	OUT TCCR0A, R17 //trabajar de forma normal con el temporizador
                                  
-00039e e015                      	LDI R17, (1<<CS02)|(1<<CS00)
-00039f bd15                      	OUT TCCR0B, R17  //Configurar el temporizador con prescaler de 1024
+0003a2 e015                      	LDI R17, (1<<CS02)|(1<<CS00)
+0003a3 bd15                      	OUT TCCR0B, R17  //Configurar el temporizador con prescaler de 1024
                                  
-0003a0 ec12                      	LDI R17, 194
-0003a1 bd16                      	OUT TCNT0, R17 //Iniciar timer en 100 para conteo
+0003a4 ec12                      	LDI R17, 194
+0003a5 bd16                      	OUT TCNT0, R17 //Iniciar timer en 100 para conteo
                                  
-0003a2 e011                      	LDI R17, (1 << TOIE0)
-0003a3 9310 006e                 	STS TIMSK0, R17 //Activar interrupción del TIMER0 de mascara por overflow
+0003a6 e011                      	LDI R17, (1 << TOIE0)
+0003a7 9310 006e                 	STS TIMSK0, R17 //Activar interrupción del TIMER0 de mascara por overflow
                                  
-0003a5 e010                      	LDI R17, 0
-0003a6 9508                      	RET
+0003a9 e010                      	LDI R17, 0
+0003aa 9508                      	RET
                                  
                                  ;********************************SUBRUTINA DE TIMER0***************************
                                  ISR_TIMER0_OVF:
                                  
-0003a7 931f                      	PUSH R17   //Se guarda R17 En la pila 
-0003a8 b71f                      	IN R17, SREG  
-0003a9 931f                      	PUSH R17      //Se guarda SREG actual en R17
+0003ab 931f                      	PUSH R17   //Se guarda R17 En la pila 
+0003ac b71f                      	IN R17, SREG  
+0003ad 931f                      	PUSH R17      //Se guarda SREG actual en R17
                                  
-0003aa ec12                      	LDI R17, 194  //Cagar el valor de desbordamiento
-0003ab bd16                      	OUT TCNT0, R17  //Cargar el valor inicial del contador
-0003ac 9aa8                      	SBI TIFR0, TOV0   //Borrar la bandera de TOV0
-0003ad 9573                      	INC R23    //Incrementar el contador de 4ms
-0003ae 9523                      	INC R18  //Incrementar el contador de los LEDs parpadeantes
+0003ae ec12                      	LDI R17, 194  //Cagar el valor de desbordamiento
+0003af bd16                      	OUT TCNT0, R17  //Cargar el valor inicial del contador
+0003b0 9aa8                      	SBI TIFR0, TOV0   //Borrar la bandera de TOV0
+0003b1 9573                      	INC R23    //Incrementar el contador de 4ms
+0003b2 9523                      	INC R18  //Incrementar el contador de los LEDs parpadeantes
                                  	
                                  	
-0003af 911f                      	POP R17    //Obtener el valor del SREG
-0003b0 bf1f                      	OUT SREG, R17   //Restaurar antiguos valores del SREG
-0003b1 911f                      	POP R17    //Obtener el valor de R16    
+0003b3 911f                      	POP R17    //Obtener el valor del SREG
+0003b4 bf1f                      	OUT SREG, R17   //Restaurar antiguos valores del SREG
+0003b5 911f                      	POP R17    //Obtener el valor de R16    
                                  
-0003b2 9518                      	RETI //Retornar al LOOP
+0003b6 9518                      	RETI //Retornar al LOOP
                                  
                                  
                                  ;**************************Inicio TIMER1***************************************		
@@ -2298,84 +2301,84 @@ D:\samue\Escritorio\OneDrive - UVG\UVG\Año 2024\Semestre 1\Progra micros\Practic
                                  
                                  	// TCNT1= T1VALUE = 0xBDC Tiempo de 4s 
                                  
-0003b3 e01b                      	LDI R17, HIGH(T1VALUE)  //Cargar el valor de desbordamiento
-0003b4 9310 0085                 	STS TCNT1H, R17  //Valor inicial del temporizador
-0003b6 ed1c                      	LDI R17, LOW(T1VALUE)  //Cargar el valor de desbordamiento
-0003b7 9310 0084                 	STS TCNT1L, R17  //Cargar el valor inicial
+0003b7 e01b                      	LDI R17, HIGH(T1VALUE)  //Cargar el valor de desbordamiento
+0003b8 9310 0085                 	STS TCNT1H, R17  //Valor inicial del temporizador
+0003ba ed1c                      	LDI R17, LOW(T1VALUE)  //Cargar el valor de desbordamiento
+0003bb 9310 0084                 	STS TCNT1L, R17  //Cargar el valor inicial
                                  
-0003b9 2711                      	CLR R17
-0003ba 9310 0080                 	STS TCCR1A, R17  //Trabajar de modo normal 
+0003bd 2711                      	CLR R17
+0003be 9310 0080                 	STS TCCR1A, R17  //Trabajar de modo normal 
                                  	
-0003bc e015                      	LDI R17, (1 << CS12) | (1 << CS10)  //Configurar prescaler de 1024
-0003bd 9310 0081                 	STS TCCR1B, R17
+0003c0 e015                      	LDI R17, (1 << CS12) | (1 << CS10)  //Configurar prescaler de 1024
+0003c1 9310 0081                 	STS TCCR1B, R17
                                  
-0003bf e011                      	LDI R17, (1 << TOIE1) 
-0003c0 9310 006f                 	STS TIMSK1, R17  //Activar interrupción del TIMER0 de mascara por overflow
+0003c3 e011                      	LDI R17, (1 << TOIE1) 
+0003c4 9310 006f                 	STS TIMSK1, R17  //Activar interrupción del TIMER0 de mascara por overflow
                                  
-0003c2 e010                      	LDI R17, 0
-0003c3 9508                      	RET
+0003c6 e010                      	LDI R17, 0
+0003c7 9508                      	RET
                                  
                                  
                                  
                                  ;********************************SUBRUTINA DE TIMER1***************************
                                  ISR_TIMER1_OVF:	
-0003c4 930f                          PUSH R16   //Se guarda R16 En la pila 
-0003c5 b70f                      	IN R16, SREG  
-0003c6 930f                      	PUSH R16      //Se guarda SREG actual en R16
+0003c8 930f                          PUSH R16   //Se guarda R16 En la pila 
+0003c9 b70f                      	IN R16, SREG  
+0003ca 930f                      	PUSH R16      //Se guarda SREG actual en R16
                                  
-0003c7 e00b                      	LDI R16, HIGH(T1VALUE)  //Cargar el valor de desbordamiento
-0003c8 9300 0085                 	STS TCNT1H, R16  //Valor inicial del temporizador
-0003ca ed0c                      	LDI R16, LOW(T1VALUE)  //Cargar el valor de desbordamiento
-0003cb 9300 0084                 	STS TCNT1L, R16  //Cargar el valor inicial
-0003cd 9ab0                      	SBI TIFR1, TOV1  //Borrar bandera de TOV1
+0003cb e00b                      	LDI R16, HIGH(T1VALUE)  //Cargar el valor de desbordamiento
+0003cc 9300 0085                 	STS TCNT1H, R16  //Valor inicial del temporizador
+0003ce ed0c                      	LDI R16, LOW(T1VALUE)  //Cargar el valor de desbordamiento
+0003cf 9300 0084                 	STS TCNT1L, R16  //Cargar el valor inicial
+0003d1 9ab0                      	SBI TIFR1, TOV1  //Borrar bandera de TOV1
                                  
-0003ce 9583                      	INC R24 //Incremento cada 4s
+0003d2 9583                      	INC R24 //Incremento cada 4s
                                  
-0003cf 910f                      	POP R16    //Obtener el valor del SREG
-0003d0 bf0f                      	OUT SREG, R16   //Restaurar antiguos valores del SREG
-0003d1 910f                      	POP R16    //Obtener el valor de R16    
+0003d3 910f                      	POP R16    //Obtener el valor del SREG
+0003d4 bf0f                      	OUT SREG, R16   //Restaurar antiguos valores del SREG
+0003d5 910f                      	POP R16    //Obtener el valor de R16    
                                  
-0003d2 9518                      	RETI //Retornar al LOOP
+0003d6 9518                      	RETI //Retornar al LOOP
                                  
                                  
                                  
                                  ;********************************SUBRUTINA DE PULSADORES***********************
                                  ISR_PCINT0:
-0003d3 93bf                      	PUSH R27
-0003d4 93ff                      	PUSH R31
-0003d5 b7ff                      	IN R31, SREG
-0003d6 93ff                      	PUSH R31
+0003d7 93bf                      	PUSH R27
+0003d8 93ff                      	PUSH R31
+0003d9 b7ff                      	IN R31, SREG
+0003da 93ff                      	PUSH R31
                                  
                                  	//*********ANTIRREBOTE*******
-0003d7 95f3                      	INC R31
-0003d8 2fcf                      	MOV R28, R31
-0003d9 30c1                      	CPI R28, 1
-0003da f430                      	BRSH continuar
+0003db 95f3                      	INC R31
+0003dc 2fcf                      	MOV R28, R31
+0003dd 30c1                      	CPI R28, 1
+0003de f430                      	BRSH continuar
                                  	//****************************
                                  
-0003db 9ad8                      	SBI PCIFR, PCIF0  //Apagar la bandera de ISR PCINT0
+0003df 9ad8                      	SBI PCIFR, PCIF0  //Apagar la bandera de ISR PCINT0
                                  
                                  
-0003dc 91ff                      	POP R31 //SREG -> R31
-0003dd bfff                      	OUT SREG, R31
-0003de 91ff                      	POP R31 // Restablecer R31 antes de int
-0003df 91bf                      	POP R27 // Restablecer R27 antes de int
-0003e0 9518                      	RETI      //Retorna de la ISR
+0003e0 91ff                      	POP R31 //SREG -> R31
+0003e1 bfff                      	OUT SREG, R31
+0003e2 91ff                      	POP R31 // Restablecer R31 antes de int
+0003e3 91bf                      	POP R27 // Restablecer R27 antes de int
+0003e4 9518                      	RETI      //Retorna de la ISR
                                  
                                  continuar:
-0003e1 b003                      	IN R0, PINB  //Leer  el puerto B
+0003e5 b003                      	IN R0, PINB  //Leer  el puerto B
                                  
-0003e2 fe04                          SBRS R0, PB4 // Salta si el bit del registro es 0 (pulsador de cambio de configuración)
-0003e3 9513                      	INC R17
+0003e6 fe04                          SBRS R0, PB4 // Salta si el bit del registro es 0 (pulsador de cambio de configuración)
+0003e7 9513                      	INC R17
                                  
-0003e4 27ff                      	CLR R31
-0003e5 9ad8                      	SBI PCIFR, PCIF0  //Apagar la bandera de ISR PCINT0
+0003e8 27ff                      	CLR R31
+0003e9 9ad8                      	SBI PCIFR, PCIF0  //Apagar la bandera de ISR PCINT0
                                  
-0003e6 91ff                          POP R31 //SREG -> R31
-0003e7 bfff                      	OUT SREG, R31
-0003e8 91ff                      	POP R31 // Restablecer R31 antes de int
-0003e9 91bf                      	POP R27 // Restablecer R27 antes de int
-0003ea 9518                      	RETI      //Retorna de la ISR
+0003ea 91ff                          POP R31 //SREG -> R31
+0003eb bfff                      	OUT SREG, R31
+0003ec 91ff                      	POP R31 // Restablecer R31 antes de int
+0003ed 91bf                      	POP R27 // Restablecer R27 antes de int
+0003ee 9518                      	RETI      //Retorna de la ISR
                                  	
                                  
                                  
@@ -2402,8 +2405,8 @@ counted separately from r26..r31 here.
 "ATmega328P" register use summary:
 x  :   0 y  :   0 z  :  12 r0 :  19 r1 :   3 r2 :  18 r3 :  21 r4 :  15 
 r5 :  15 r6 :  13 r7 :  11 r8 :   4 r9 :   9 r10:   6 r11:   9 r12:  11 
-r13:   3 r14:   9 r15:  11 r16:  40 r17:  56 r18:   4 r19:  13 r20:  20 
-r21:  16 r22:  15 r23:   3 r24:   5 r25: 104 r26:  50 r27:  48 r28:  34 
+r13:   4 r14:   9 r15:  11 r16:  40 r17:  57 r18:   4 r19:  13 r20:  20 
+r21:  16 r22:  16 r23:   3 r24:   5 r25: 104 r26:  50 r27:  48 r28:  34 
 r29:  44 r30:  31 r31:  35 
 Registers used: 33 out of 35 (94.3%)
 
@@ -2411,18 +2414,18 @@ Registers used: 33 out of 35 (94.3%)
 .lds  :   0 .sts  :   0 adc   :   0 add   :  12 adiw  :   0 and   :   0 
 andi  :   0 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
 brcc  :   0 brcs  :   0 break :   0 breq  :  82 brge  :   0 brhc  :   0 
-brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   4 brmi  :   0 
+brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   5 brmi  :   0 
 brne  :   1 brpl  :   0 brsh  :  12 brtc  :   0 brts  :   0 brvc  :   0 
 brvs  :   0 bset  :   0 bst   :   0 call  :  22 cbi   :   0 cbr   :   0 
 clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :  29 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   6 cpc   :   0 
-cpi   :  93 cpse  :  11 dec   :  12 eor   :   0 fmul  :   0 fmuls :   0 
+cpi   :  94 cpse  :  11 dec   :  12 eor   :   0 fmul  :   0 fmuls :   0 
 fmulsu:   0 icall :   0 ijmp  :   0 in    :   9 inc   :  29 jmp   : 104 
 ld    :   0 ldd   :   0 ldi   : 135 lds   :   0 lpm   :  24 lsl   :   0 
-lsr   :   0 mov   : 115 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
+lsr   :   0 mov   : 116 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
 neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :  33 pop   :  10 
 push  :   7 rcall :   0 ret   :   3 reti  :   4 rjmp  :   0 rol   :   0 
-ror   :   0 sbc   :   0 sbci  :   0 sbi   :  48 sbic  :   0 sbis  :   0 
+ror   :   0 sbc   :   0 sbci  :   0 sbi   :  49 sbic  :   0 sbis  :   0 
 sbiw  :   0 sbr   :   0 sbrc  :   6 sbrs  :  18 sec   :   0 seh   :   0 
 sei   :   1 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
 sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :  14 
@@ -2432,7 +2435,7 @@ Instructions used: 27 out of 113 (23.9%)
 "ATmega328P" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x0007d6   1944     10   1954   32768   6.0%
+[.cseg] 0x000000 0x0007de   1952     10   1962   32768   6.0%
 [.dseg] 0x000100 0x000100      0      0      0    2048   0.0%
 [.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
 
